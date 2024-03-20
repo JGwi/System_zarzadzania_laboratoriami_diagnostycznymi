@@ -1,0 +1,524 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+% \usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+
+\addtolength{\hoffset}{-1.5cm}
+\addtolength{\marginparwidth}{-1.5cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\voffset}{-1cm}
+\addtolength{\textheight}{2.5cm}
+\setlength{\topmargin}{0cm}
+\setlength{\headheight}{0cm}
+
+\begin{document}
+
+\title{Dokumentacja projektu Bazy danych}
+\author{Nikodem Bulanda}
+\date{\today}
+
+\maketitle
+
+\begin{center}
+\textbf{LabMaster - System zarządzania laboratoriami diagnostycznymi} 
+\end{center}
+
+\begin{center}
+Autorzy: Jakub Gwiżdż, Justyna Jachowicz, Kamil Oleś \\
+\end{center}
+
+\begin{center}
+Prowadzący: mgr inż. Nikodem Bulanda
+\end{center}
+
+\newpage
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+\newpage
+
+\section{Tytył}
+\textbf{System zarządzania laboratoriami diagnostycznymi}\\
+
+\section{Nazwa robocza}
+LabMaster System - \\
+
+\newpage
+\section{Cel projektu}
+% Jednoznacznie określony stan w przyszłości, nie mylić z produktem końcowym\\
+
+\hspace{0.60cm}Celem projektu "LabMaster System" jest stworzenie aplikacji, która umożliwi efektywne zarządzanie procesami związanymi z diagnostyką medyczną w laboratoriach. Projekt ma na celu dostarczenie produktu w postaci systemu informatycznego funkcjonującego w oparciu o kilka niezbędnych elementów. Zadaniem systemu jest efektywne zarządzenie wszystkimi aspektami związanymi z laboratoriami diagnostycznymi.
+
+Zaczynając od rejestracji pacjentów i zleceniu badań, analizie wyników, aż po generowaniu raportów i faktur.Cel jest osiągany poprzez optymalizację procesów, minimalizację błędów oraz automatyzację tam, gdzie to możliwe. Istotnym aspektem jest również zapewnienie wysokich standardów bezpieczeństwa danych medycznych, zgodnie z regulacjami HIPAA/GDPR. System musi gwarantować poufność, integralność i dostępność danych pacjentów oraz badań laboratoryjnych.
+
+Musi również cechować się doskonałą obsługą klienta, poprzez łatwy dostęp do usług diagnostycznych oraz szybkiego i precyzyjnego przetwarzania wyników badań. System powinien umożliwiać szybką rejestrację pacjentów, sprawdzenie zleceń NFZ, jak również generowanie raportów dostępnych dla pacjentów, lekarzy i innych zainteresowanych stron. 
+
+Skuteczna kontrola - Projekt zakłada wprowadzenie systematycznej kontroli jakości procesów laboratoryjnych oraz zapewnienie reakcji na potencjalne odchylenia. Automatyczne informowanie użytkowników o ewentualnych błędach pozwoli na szybką korektę i minimalizację ryzyka.
+
+Dlatego, system ma być elastyczny i łatwo integrowalny z istniejącymi systemami medycznymi, zapewniając możliwości dostępu poprzez urządzenia mobilne oraz integracje z zewnętrznymi systemami pozwoli to  na płynną wymianę danych oraz elastyczność operacyjną. 
+
+Każdy projekt powinien mieć utworzony interfejs użytkownika, który będzie łatwy w obsłudze dla wszystkich aktorów zaangażowanych w proces diagnostyczny - od personelu laboratorium, przez personel administracyjny, po lekarzy i pacjentów.  usługi medyczne powinny być  szybkie i  precyzyjne, aby tego dokonać należy zwiększyć efektywność operacyjną Poprzez automatyzację procesów, monitorowanie wydajności oraz integrację zewnętrznymi systemami medycznymi.
+
+
+
+\newpage
+\section{Zakres}
+
+\subsection{Analiza wymagań}
+ (oraz ,,deasemblacja'' procesu osiągnięcia celu)
+\\
+ https://www.atd-software.pl/oferta/
+\\ 
+
+\begin{itemize}
+
+\item Rejestracja zleceń i pacjentów:
+      \begin{itemize}
+      \item System ma umożliwiać łatwą rejestrację pacjentów.
+      \item Implementacja tworzenia zleceń badań z możliwością dodawania szczegółów, sprawdzanie zleceń NFZ, obliczanie kosztów.
+      \end{itemize}
+      
+\item Walidacja:
+    \begin{itemize}
+    \item System powinien zawierać mechanizmy walidacji danych wejściowych według istniejących wzorów systemowych, w celu uniknięcia błędów i zapewnienia dokładności informacji.
+    \end{itemize}
+    
+\item Księgowość:
+    \begin{itemize}
+    \item System ma obejmować zarządzanie płatnościami, fakturowaniem oraz monitorowanie kosztów związanych z badaniami.
+    \item System musi umożliwiać generowanie różnorodnych raportów dla pacjentów, lekarzy i innych zainteresowanych stron.
+    \item Raport powinny być łatwo współdzielone, jak wysyłka mailem, druk, poczta itp.
+    \end{itemize}
+
+\item Pracownie analityczne/laboratorium:
+    \begin{itemize}
+    \item Skupienie na efektywnym zarządzaniu pracowniami analitycznymi, w tym planowaniu zadań i monitorowaniu postępu prac, dostęp do informacji o próbkach i zleconych badaniach
+    \item Wprowadzenie modułu umożliwiającego zarządzanie danymi związanymi z badaniami mikrobiologicznymi, takimi jak wzory wypełnienia, automatyczna wstępna analiza wyników.
+    \end{itemize}
+
+\item  Kontrola jakości:
+    \begin{itemize}
+    \item Zapewnienie systematycznej kontroli jakości, zarządzania dokumentacją związaną z kontrolą jakości oraz reakcji na potencjalne odchylenia.
+    \item Automatycznie informuje o możliwym błędzie zainteresowanego użytkownika.
+    \end{itemize}
+
+\item Magazyn:
+    \begin{itemize}
+    \item Implementacja skutecznego zarządzania inwentarzem i magazynem, z uwzględnieniem dostępności reagentów, sprzętu laboratoryjnego itp.
+    \item Dokładny spis istniejących próbek przeznaczonych do badań.
+    \end{itemize}
+
+
+\end{itemize}
+
+
+
+- // Rejestracja pacjenta/klienta [recepcjonistka] \\
+ - Sprawdzenie zlecenia NFZ \\
+ - lub sprzedaż badania \\
+\\
+- // Pobranie informacji o pacjencie (on podaje przy recepcji)\\
+ - // Pobranie materiału (krew, mocz itp.) do badania [niektóre z próbnej pobrane w ośrodku]\\
+ - Przyznali wewnętrznego identyfikatora próbce do badania, umieszczenie danych o badaniach do próbki do systemu\\
+ -  Próba do magazynu, dane odnotowane do księgowości \\
+ \\
+- // Dane próbki i badani do wykonania są dostępne w grafiku pracownika  badań [laborant] \\
+- Wykonacie przypisanych badań do próbki, wprowadzenie wyników do systemu [laborant] \\
+\\
+- // Dane przekazane do administracji [księgowa]\\
+- Sprawdzenie prawidłowości danych w systemie (wykonanie wszystkich badań przypisanych próbką, możliwe błędy, zapóźnienia, ) \\
+- Odnotowanie niezbędnych zmian w systemie, usunięcie próbek \\
+- Wysyłka wyników do zainteresowanych stron (lekarz, pacjent itp.).\\
+- Archiwizacja danych wykonanego zlecenia \\
+\\
+ Aktorzy:\\
+ - recepcja\\
+ - laboratorium\\
+ - księgowość\\
+ - admin\\
+\\
+ Co powinni wiedzieć/ móc zrobić 'aktorzy' by wykonać pracę:\\
+ A.) Recepcja\\
+ - Rejestracja danych nowych pacjentów\\
+ - Przypisywanie badania do pacjentów, i związanych próbek\\
+ - Zarządza dostępem do danych pacjentów.\\
+ - Przegląda historię wykonanych już badań pacjenta.\\
+ \\
+ B.) Laboratorium \\
+ - Plan badań (harmonogram) do wykonania przez wyznaczony personel\\
+ - Dane o składanych próbkach.\\
+ - Składanie precyzyjnych wyników badań do systemu.\\
+ - Stan systemów i maszyn diagnostycznych niezbędnych do prowadzenia badań\\
+ - Sprawdzenie rozkładu użyć maszyn/ terminów wykonania badań\\
+ \\
+ C.)Księgowość \\
+ - Wprowadza jednolitych danych badań laboratoryjnych i pacjenta do system.\\
+ - Generuje raporty dotyczące wyników z danych dostępnych wewnątrz systemu.\\
+ - Odpieranie zakładanych zamówienia na badania laboratoryjne dla konkretnych pacjentów (NFZ).\\
+ - Zarządza danymi dotyczącymi personelu medycznego.\\
+ - Monitoruje stan zasobów laboratorium.\\
+
+
+ 
+
+
+
+
+
+zadania aktorów cd.
+
+recepcjoniskta:
+Rejestruje nowych pacjentów.
+Przypisuje badania do pacjentów.
+Wprowadza wyniki badań laboratoryjnych.
+Generuje raporty dotyczące wyników.
+Zarządza dostępem do danych pacjentów.
+
+Lekarz:
+Przegląda wyniki badań pacjentów.
+Składa zamówienia na badania laboratoryjne.
+Dostęp do historii badań swoich pacjentów.
+
+Pacjent:
+Sprawdza wyniki swoich badań.
+Rejestruje się na badania laboratoryjne.
+Przegląda historię badań.
+
+Personel Administracyjny:
+Zarządza danymi dotyczącymi personelu medycznego.
+Monitoruje stan zasobów laboratorium.
+
+///////////////////////////
+
+z chatu
+Zarządzanie pacjentami:
+Umożliw użytkownikom dodawanie, przeglądanie i aktualizowanie informacji o pacjentach.
+Stwórz mechanizmy przypisywania badań do konkretnych pacjentów.
+
+Zarządzanie badaniami:
+Umożliw dodawanie nowych rodzajów badań laboratoryjnych.
+Zapewnij funkcje związane z przypisywaniem badań do pacjentów.
+
+Wprowadzanie i przetwarzanie wyników:
+Dodaj funkcje wprowadzania wyników badań laboratoryjnych.
+Zaimplementuj mechanizmy przetwarzania wyników i ich przechowywania w systemie.
+
+
+\subsection{Wymagania funkcjonalne i niefunkcjonalne}
+Funkcjonalne:
+\begin{itemize}
+\item Rejestracja Zleceń i Pacjentów:
+  \begin{itemize}
+  \item Aktorzy: recepcja
+  \item Umożliwia rejestrację nowych pacjentów.
+  \item Przypisuje badania do pacjentów i związanych próbek.
+  \item Zarządza dostępem do danych pacjentów.
+  \item Pozwala na przegląd historii badań pacjenta.
+  \end{itemize}
+  
+\item Laboratorium:
+  \begin{itemize}
+  \item Aktorzy: laboratorium
+  \item Udostępnia plan badań do wykonania przez wyznaczony personel.
+  \item Zarządza danymi o składanych próbkach.
+  \item Składa precyzyjne wyniki badań do systemu.
+  \item Monitoruje stan systemów i maszyn diagnostycznych.
+  \end{itemize}
+  
+\item Księgowość:
+  \begin{itemize}
+  \item Aktorzy: księgowość
+  \item Wprowadza jednolite dane badań laboratoryjnych i pacjenta do systemu.
+  \item Generuje raporty z danych wewnątrz systemu.
+  \item Odpowiada za zakładane zamówienia na badania (NFZ).
+  \item Zarządza danymi dotyczącymi personelu medycznego.
+  \item Monitoruje stan zasobów laboratorium.
+  \end{itemize}
+\end{itemize}
+
+
+Niefunkcjonalne:
+\begin{itemize}
+
+\item[--] Interfejs Użytkownika: Zapewnienie intuicyjnego interfejsu użytkownika dla wszystkich aktorów.
+\item[--] Bezpieczeństwo Danych: Zastosowanie wysokich standardów bezpieczeństwa danych medycznych, zgodnie z normami HIPAA/GDPR.
+\item[--] Automatyzacja: Automatyzacja procesów tam, gdzie to możliwe, w celu zwiększenia efektywności operacyjnej.
+\item[--] Mobilność: Dostarczenie dostępu do systemu poprzez urządzenia mobilne dla elastyczności operacyjnej.
+\item[--] Szkolenie Personelu: Dostarczenie funkcji pomocy i szkoleń online dla użytkowników systemu.
+\item[--] Monitorowanie Wydajności: Implementacja narzędzi do monitorowania czasu przetwarzania próbek oraz efektywności operacyjnej laboratorium.
+\item[--] Integracja z Zewnętrznymi Systemami: Zintegrowanie systemu z innymi systemami medycznymi dla płynnej wymiany danych.
+
+\end{itemize}
+
+\subsection{Diagram przypadków użycia i diagram przepływu (opcjonalny)}
+
+\subsection{Dobór technologii}
+- Język pisania: Java \\
+- Bazy danych: MySQL \\
+- Program: Intellij IDEA \\
+
+\newpage
+\section{Scenariusze}
+(tytuł, numer, aktorzy, stan wejścia (warunki + dane), przebieg scenariusza, wynik, scenariusz alternatywny, jeśli istnieje)
+
+\newpage
+\section{Estymacja czasowa }
+(poszczególnych zadań jak i określenie wymagań MVP oraz terminu końcowego oddania)
+\\
+- // Ustalenie zakresu teoretycznego: \\
+    - technicznych wymagań program \\
+    - wykorzystywanych technologi \\
+    - ustaleń wstępnej budowy bazy danych \\
+    - Wstępne ustalenie danych do obróbki \\
+    - Stworzenie git-huba\\
+- // Zatwierdzenie wybranych schematów danych i wprowadzenie oprawek:\\
+    - Uzupełnienie brakujących elementów dokumentacji\\
+    - Dodanie wykresów (wstępne)\\
+    - Dodanie kilku prostych scenariuszy\\
+- // Rozpoczęcie pracy nad programem\\
+    - Podszkolenie pod względem pisma w języku programowania \\
+    - Instalacja koniecznych programów i technologi\\
+    - Zaczęcie projektowani interfejsu użytkownika\\
+    - Stworzenie plików aplikacji i dodanie ich do git-huba \\
+    - Stworzenie wstępnej bazy danych \\
+- // Praca nag kodem aplikacji\\
+    - Logowanie
+    - 
+
+\newpage
+\section{Implementacja}
+
+\newpage
+\section{Testy i ich wyniki}
+\section{Podsumowanie i bilans}
+(MVP vs rzeczywistość)
+
+\newpage
+\section{Przykłady użycia elementów języka \LaTeX - nie wchodzi w zakres oddawanej dokumentacji stanowi jedynie przykład}
+\begin{large}Powiększona czcionka.\end{large}
+{\large To też jest powiększona czcionka.}
+
+Jakiś nowy akapit.
+
+
+
+To jest dobór technologii.
+"Tekst w cudzysłowie podwójnym maszynowym" (wygląda nienaturalnie).
+,,Tekst w cudzysłowie podwójnym''. ``Angielski cudzysłów''.
+
+,,Twardą'' spację oznacza się znakiem tylda \~{} ($\sim$).
+Mamy do dyspozycji trzy rodzaje myślników - ,,krótki'', -- ,,normalny'' i --- ,,długi''.
+
+\label{nazwa_etykiety}
+
+Przygotuj stronę w \textbf{HTML}'u, która jest ogłoszeniem o seminarium.
+W lewym, górnym rogu strony umieść logo Wydziału Fizyki UW.
+Podaj nazwę seminarium (np.~Seminarium Kosmologia i Fizyka Cząstek),
+tytuł, imię i nazwisko  wygłaszającego seminarium,
+instytucję której jest pracownikiem,
+adres, numer sali, datę, godzinę.
+ Dodaj także w punktach streszczenie wystąpienia\footnote{Jakaś informacja na marginesie.}.
+ W zależności od stopnia ważności informacji, zróżnicuj rodzaj,
+wielkość i typ czcionki -- Sekcja \ref{nazwa_etykiety}.
+
+\section{Otoczenia}
+
+\subsection{Formatowanie}
+
+Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+świętym Kościoła katolickiego i Cerkwi prawosławnej. Wśród badaczy nie ma zgody co do
+tego, czy słowo Malachiasz to imię, tytuł proroka, czy też przypisana sobie przez
+anonimowego autora rola posłańca Bożego. Podobne słowo w takim kontekście pojawia
+się w Ml 2,7 i Ml 3,1. Rozbieżności mogły powstać za sprawą greckiego tłumacza, który
+w Septuagincie przełożył z hebrajskiego Brzemię słowa Pańskiego w ręce Malachi na
+(...) w ręce anioła tj. posła Jego, pozbawiając je jednocześnie cech
+imienia własnego. Na tej podstawie Orygenes i Tertulian sądzili, że prorok był aniołem.
+
+\begin{center}
+Żyjący w V wieku p.n.e. prorok Malachiasz był autorem Księgi Malachiasza, będącej
+ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+świętym Kościoła katolickiego i Cerkwi prawosławnej. Wśród badaczy nie ma zgody co do
+tego, czy słowo Malachiasz to imię, tytuł proroka, czy też przypisana sobie przez
+anonimowego autora rola posłańca Bożego. Podobne słowo w takim kontekście pojawia
+się w Ml 2,7 i Ml 3,1. Rozbieżności mogły powstać za sprawą greckiego tłumacza, który
+w Septuagincie przełożył z hebrajskiego Brzemię słowa Pańskiego w ręce Malachi na
+(...) w ręce anioła tj. posła Jego, pozbawiając je jednocześnie cech
+imienia własnego. Na tej podstawie Orygenes i Tertulian sądzili, że prorok był aniołem.
+\end{center}
+
+\begin{flushleft}
+Żyjący w V wieku p.n.e. prorok Malachiasz był autorem Księgi Malachiasza, będącej
+ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+świętym Kościoła katolickiego i Cerkwi prawosławnej. Wśród badaczy nie ma zgody co do
+tego, czy słowo Malachiasz to imię, tytuł proroka, czy też przypisana sobie przez
+anonimowego autora rola posłańca Bożego. Podobne słowo w takim kontekście pojawia
+się w Ml 2,7 i Ml 3,1. Rozbieżności mogły powstać za sprawą greckiego tłumacza, który
+w Septuagincie przełożył z hebrajskiego Brzemię słowa Pańskiego w ręce Malachi na
+(...) w ręce anioła tj. posła Jego, pozbawiając je jednocześnie cech
+imienia własnego. Na tej podstawie Orygenes i Tertulian sądzili, że prorok był aniołem.
+\end{flushleft}
+
+\begin{quote}
+Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+świętym Kościoła katolickiego i Cerkwi prawosławnej.
+
+Wśród badaczy nie ma zgody co do
+tego, czy słowo Malachiasz to imię, tytuł proroka, czy też przypisana sobie przez
+anonimowego autora rola posłańca Bożego. Podobne słowo w takim kontekście pojawia
+się w Ml 2,7 i Ml 3,1. Rozbieżności mogły powstać za sprawą greckiego tłumacza, który
+w Septuagincie przełożył z hebrajskiego Brzemię słowa Pańskiego w ręce Malachi na
+(...) w ręce anioła tj. posła Jego, pozbawiając je jednocześnie cech
+imienia własnego. Na tej podstawie Orygenes i Tertulian sądzili, że prorok był aniołem.
+\end{quote}
+
+\begin{quotation}
+Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+świętym Kościoła katolickiego i Cerkwi prawosławnej.
+
+Wśród badaczy nie ma zgody co do
+tego, czy słowo Malachiasz to imię, tytuł proroka, czy też przypisana sobie przez
+anonimowego autora rola posłańca Bożego. Podobne słowo w takim kontekście pojawia
+się w Ml 2,7 i Ml 3,1. Rozbieżności mogły powstać za sprawą greckiego tłumacza, który
+w Septuagincie przełożył z hebrajskiego Brzemię słowa Pańskiego w ręce Malachi na
+(...) w ręce anioła tj. posła Jego, pozbawiając je jednocześnie cech
+imienia własnego. Na tej podstawie Orygenes i Tertulian sądzili, że prorok był aniołem.
+\end{quotation}
+
+{\footnotesize
+\begin{verbatim}
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-language" content="pl" />
+  <link href='style.css' rel='stylesheet' type='text/css' />
+  <title>R. J. Wysocki</title>
+</head>
+\end{verbatim}
+}
+
+\subsection{Wypunktowanie i numeracja}
+
+\begin{itemize}
+\item[--] Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+  ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+  świętym Kościoła katolickiego i Cerkwi prawosławnej.
+\item Drugi punkt.
+  \begin{itemize}
+  \item Pierwszy podpunkt.
+  \item Drugi podpunkt.
+  \end{itemize}
+\item Trzeci punkt.
+\item Czwarty punkt.
+\end{itemize}
+
+\begin{enumerate}
+\item Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+  ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+  świętym Kościoła katolickiego i Cerkwi prawosławnej.
+\item Drugi punkt.
+  \begin{itemize}
+  \item[--] Pierwszy podpunkt.
+  \item[--] Drugi podpunkt.
+  \end{itemize}
+\item Trzeci punkt.
+  \begin{enumerate}
+  \item Pierwszy podpunkt.
+  \item Drugi podpunkt..
+    \begin{enumerate}
+    \item Ala
+    \item ma
+    \item kota.
+    \end{enumerate}
+  \end{enumerate}
+\item Czwarty punkt.
+\end{enumerate}
+
+\begin{description}
+\item[nazwa 1] -- opis nazwy 1.
+\item[nazwa 2] -- opis nazwy 2.
+\item[nazwa 3] -- opis nazwy 3.  Opis może być dłuższy, niż jeden wiersz i warto
+  zobaczyć co się wtedy stanie.
+\end{description}
+
+\subsection{Tabele}
+
+\begin{table}[htb]
+  \begin{tabular}{clr}
+  {\bf Wyśrodkowanie} & {\bf Do lewej} & {\bf Do prawej} \\
+  Treść & Treść & Treść \\
+  Kolejny wiersz & Kolejnuy wiersz & Kolejny wiersz \\
+  \end{tabular}
+\caption{Tabela}
+\label{tab:bez_ramek}
+\end{table}
+
+\begin{table}[htb]
+  \begin{tabular}{c|l|r}
+  {\bf Wyśrodkowanie} & {\bf Do lewej} & {\bf Do prawej} \\
+  Treść & Treść & Treść \\
+  Kolejny wiersz & Kolejnuy wiersz & Kolejny wiersz \\
+  \end{tabular}
+\caption{Tabela z liniami pionowymi między kolumnami}
+\label{tab:pionowe}
+\end{table}
+
+\begin{table}[htb]
+  \begin{tabular}{|c|l|r|}
+  \hline
+  {\bf Wyśrodkowanie} & {\bf Do lewej} & {\bf Do prawej} \\
+  \hline
+  \hline
+  Treść & Treść & Treść \\
+  \hline
+  Kolejny wiersz & Kolejnuy wiersz & Kolejny wiersz \\
+  \hline
+  \end{tabular}
+\caption{Tabela z liniami pionowymi między kolumnami i poziomymi między wierszami}
+\label{tab:ramki}
+\end{table}
+
+\begin{table}[htb]
+  \begin{tabular}{|c|l|p{6cm}|}
+  \hline
+  {\bf Wyśrodkowanie} & {\bf Do lewej} & {\bf Paragraf} \\
+  \hline
+  \hline
+  Treść & Treść & Treść \\
+  \hline
+  Kolejny wiersz & Kolejnuy wiersz &
+  Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+  ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. \\
+  \hline
+  \end{tabular}
+\caption{Tabela z dłuższym tekstem}
+\label{tab:paragraf}
+\end{table}
+
+Na rysunku \ref{sinus} jest przedstawiony wykres funkcji sin(x).  W tablicach
+\ref{tab:bez_ramek}, \ref{tab:pionowe}, \ref{tab:ramki}, \ref{tab:paragraf}
+mamy przykłady zastosowania środowiska \verb#tabular#.
+
+Odwołanie do literatury -- pierwsza pozycja w spisie \cite{Wikipedia}, moja strona
+domowa \cite{RJW}.
+
+\begin{figure}[htb!p]
+% \includegraphics[width=0.9\textwidth]{sinus.pdf}
+\caption{Wykres funkcji sin(x)}
+\label{sinus}
+\end{figure}
+
+\begin{thebibliography}{9}
+\bibitem{Wikipedia} {\it Pauli matrices}
+  (\url{http://en.wikipedia.org/wiki/Pauli_matrices}).
+\bibitem{RJW} {\it Moja strona} (\url{http://www.fuw.edu.pl/~rwys}).
+\end{thebibliography}
+
+\end{document}

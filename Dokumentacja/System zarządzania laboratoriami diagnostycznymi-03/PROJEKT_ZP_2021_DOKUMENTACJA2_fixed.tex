@@ -1,0 +1,278 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+% \usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+
+\addtolength{\hoffset}{-1.5cm}
+\addtolength{\marginparwidth}{-1.5cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\voffset}{-1cm}
+\addtolength{\textheight}{2.5cm}
+\setlength{\topmargin}{0cm}
+\setlength{\headheight}{0cm}
+
+\begin{document}
+
+\title{Dokumentacja projektu ZPI}
+\author{Nikodem Bulanda}
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+Zarys dokumentacji projektowej stanowiący podstawę do realizacji projektu zespołowego. (Z wykorzystaniem schematyzmu struktury znaczników \LaTeX  stworzonego przez R. J. Wysockiego.)
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+\newpage
+
+\section{Tytuł}
+\section{Nazwa robocza}
+\section{Cel}
+Jednoznacznie określony stan w przyszłości, nie mylić z produktem końcowym
+\section{Zakres}
+\subsection{Analiza wymagań}
+ (oraz ,,deasemblacja'' procesu osiągnięcia celu)
+\subsection{Wymagania funkcjonalne i niefunkcjonalne}
+\subsection{Diagram przypadków użycia i diagram przepływu (opcjonalny)}
+\subsection{Dobór technologii}
+\section{Scenariusze}
+(tytuł, numer, aktorzy, stan wejścia (warunki + dane), przebieg scenariusza, wynik, scenariusz alternatywny, jeśli istnieje)
+\section{Estymacja czasowa }
+(poszczególnych zadań jak i określenie wymagań MVP oraz terminu końcowego oddania)
+\section{Implementacja}
+\section{Testy i ich wyniki}
+\section{Podsumowanie i bilans}
+(MVP vs rzeczywistość)
+\newpage
+\section{Przykłady użycia elementów języka \LaTeX - nie wchodzi w zakres oddawanej dokumentacji stanowi jedynie przykład}
+\begin{large}Powiększona czcionka.\end{large}
+{\large To też jest powiększona czcionka.}
+
+Jakiś nowy akapit.
+
+
+
+To jest dobór technologii.
+"Tekst w cudzysłowie podwójnym maszynowym" (wygląda nienaturalnie).
+,,Tekst w cudzysłowie podwójnym''. ``Angielski cudzysłów''.
+
+,,Twardą'' spację oznacza się znakiem tylda \~{} ($\sim$).
+Mamy do dyspozycji trzy rodzaje myślników - ,,krótki'', -- ,,normalny'' i --- ,,długi''.
+
+\label{nazwa_etykiety}
+
+Przygotuj stronę w \textbf{HTML}'u, która jest ogłoszeniem o seminarium.
+W lewym, górnym rogu strony umieść logo Wydziału Fizyki UW.
+Podaj nazwę seminarium (np.~Seminarium Kosmologia i Fizyka Cząstek),
+tytuł, imię i nazwisko  wygłaszającego seminarium,
+instytucję której jest pracownikiem,
+adres, numer sali, datę, godzinę.
+ Dodaj także w punktach streszczenie wystąpienia\footnote{Jakaś informacja na marginesie.}.
+ W zależności od stopnia ważności informacji, zróżnicuj rodzaj,
+wielkość i typ czcionki -- Sekcja \ref{nazwa_etykiety}.
+
+\section{Otoczenia}
+
+\subsection{Formatowanie}
+
+Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+świętym Kościoła katolickiego i Cerkwi prawosławnej. Wśród badaczy nie ma zgody co do
+tego, czy słowo Malachiasz to imię, tytuł proroka, czy też przypisana sobie przez
+anonimowego autora rola posłańca Bożego. Podobne słowo w takim kontekście pojawia
+się w Ml 2,7 i Ml 3,1. Rozbieżności mogły powstać za sprawą greckiego tłumacza, który
+w Septuagincie przełożył z hebrajskiego Brzemię słowa Pańskiego w ręce Malachi na
+(...) w ręce anioła tj. posła Jego, pozbawiając je jednocześnie cech
+imienia własnego. Na tej podstawie Orygenes i Tertulian sądzili, że prorok był aniołem.
+
+\begin{center}
+Żyjący w V wieku p.n.e. prorok Malachiasz był autorem Księgi Malachiasza, będącej
+ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+świętym Kościoła katolickiego i Cerkwi prawosławnej. Wśród badaczy nie ma zgody co do
+tego, czy słowo Malachiasz to imię, tytuł proroka, czy też przypisana sobie przez
+anonimowego autora rola posłańca Bożego. Podobne słowo w takim kontekście pojawia
+się w Ml 2,7 i Ml 3,1. Rozbieżności mogły powstać za sprawą greckiego tłumacza, który
+w Septuagincie przełożył z hebrajskiego Brzemię słowa Pańskiego w ręce Malachi na
+(...) w ręce anioła tj. posła Jego, pozbawiając je jednocześnie cech
+imienia własnego. Na tej podstawie Orygenes i Tertulian sądzili, że prorok był aniołem.
+\end{center}
+
+\begin{flushleft}
+Żyjący w V wieku p.n.e. prorok Malachiasz był autorem Księgi Malachiasza, będącej
+ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+świętym Kościoła katolickiego i Cerkwi prawosławnej. Wśród badaczy nie ma zgody co do
+tego, czy słowo Malachiasz to imię, tytuł proroka, czy też przypisana sobie przez
+anonimowego autora rola posłańca Bożego. Podobne słowo w takim kontekście pojawia
+się w Ml 2,7 i Ml 3,1. Rozbieżności mogły powstać za sprawą greckiego tłumacza, który
+w Septuagincie przełożył z hebrajskiego Brzemię słowa Pańskiego w ręce Malachi na
+(...) w ręce anioła tj. posła Jego, pozbawiając je jednocześnie cech
+imienia własnego. Na tej podstawie Orygenes i Tertulian sądzili, że prorok był aniołem.
+\end{flushleft}
+
+\begin{quote}
+Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+świętym Kościoła katolickiego i Cerkwi prawosławnej.
+
+Wśród badaczy nie ma zgody co do
+tego, czy słowo Malachiasz to imię, tytuł proroka, czy też przypisana sobie przez
+anonimowego autora rola posłańca Bożego. Podobne słowo w takim kontekście pojawia
+się w Ml 2,7 i Ml 3,1. Rozbieżności mogły powstać za sprawą greckiego tłumacza, który
+w Septuagincie przełożył z hebrajskiego Brzemię słowa Pańskiego w ręce Malachi na
+(...) w ręce anioła tj. posła Jego, pozbawiając je jednocześnie cech
+imienia własnego. Na tej podstawie Orygenes i Tertulian sądzili, że prorok był aniołem.
+\end{quote}
+
+\begin{quotation}
+Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+świętym Kościoła katolickiego i Cerkwi prawosławnej.
+
+Wśród badaczy nie ma zgody co do
+tego, czy słowo Malachiasz to imię, tytuł proroka, czy też przypisana sobie przez
+anonimowego autora rola posłańca Bożego. Podobne słowo w takim kontekście pojawia
+się w Ml 2,7 i Ml 3,1. Rozbieżności mogły powstać za sprawą greckiego tłumacza, który
+w Septuagincie przełożył z hebrajskiego Brzemię słowa Pańskiego w ręce Malachi na
+(...) w ręce anioła tj. posła Jego, pozbawiając je jednocześnie cech
+imienia własnego. Na tej podstawie Orygenes i Tertulian sądzili, że prorok był aniołem.
+\end{quotation}
+
+{\footnotesize
+\begin{verbatim}
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-language" content="pl" />
+  <link href='style.css' rel='stylesheet' type='text/css' />
+  <title>R. J. Wysocki</title>
+</head>
+\end{verbatim}
+}
+
+\subsection{Wypunktowanie i numeracja}
+
+\begin{itemize}
+\item[--] Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+  ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+  świętym Kościoła katolickiego i Cerkwi prawosławnej.
+\item Drugi punkt.
+  \begin{itemize}
+  \item Pierwszy podpunkt.
+  \item Drugi podpunkt.
+  \end{itemize}
+\item Trzeci punkt.
+\item Czwarty punkt.
+\end{itemize}
+
+\begin{enumerate}
+\item Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+  ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. Malachiasz jest
+  świętym Kościoła katolickiego i Cerkwi prawosławnej.
+\item Drugi punkt.
+  \begin{itemize}
+  \item[--] Pierwszy podpunkt.
+  \item[--] Drugi podpunkt.
+  \end{itemize}
+\item Trzeci punkt.
+  \begin{enumerate}
+  \item Pierwszy podpunkt.
+  \item Drugi podpunkt..
+    \begin{enumerate}
+    \item Ala
+    \item ma
+    \item kota.
+    \end{enumerate}
+  \end{enumerate}
+\item Czwarty punkt.
+\end{enumerate}
+
+\begin{description}
+\item[nazwa 1] -- opis nazwy 1.
+\item[nazwa 2] -- opis nazwy 2.
+\item[nazwa 3] -- opis nazwy 3.  Opis może być dłuższy, niż jeden wiersz i warto
+  zobaczyć co się wtedy stanie.
+\end{description}
+
+\subsection{Tabele}
+
+\begin{table}[htb]
+  \begin{tabular}{clr}
+  {\bf Wyśrodkowanie} & {\bf Do lewej} & {\bf Do prawej} \\
+  Treść & Treść & Treść \\
+  Kolejny wiersz & Kolejnuy wiersz & Kolejny wiersz \\
+  \end{tabular}
+\caption{Tabela}
+\label{tab:bez_ramek}
+\end{table}
+
+\begin{table}[htb]
+  \begin{tabular}{c|l|r}
+  {\bf Wyśrodkowanie} & {\bf Do lewej} & {\bf Do prawej} \\
+  Treść & Treść & Treść \\
+  Kolejny wiersz & Kolejnuy wiersz & Kolejny wiersz \\
+  \end{tabular}
+\caption{Tabela z liniami pionowymi między kolumnami}
+\label{tab:pionowe}
+\end{table}
+
+\begin{table}[htb]
+  \begin{tabular}{|c|l|r|}
+  \hline
+  {\bf Wyśrodkowanie} & {\bf Do lewej} & {\bf Do prawej} \\
+  \hline
+  \hline
+  Treść & Treść & Treść \\
+  \hline
+  Kolejny wiersz & Kolejnuy wiersz & Kolejny wiersz \\
+  \hline
+  \end{tabular}
+\caption{Tabela z liniami pionowymi między kolumnami i poziomymi między wierszami}
+\label{tab:ramki}
+\end{table}
+
+\begin{table}[htb]
+  \begin{tabular}{|c|l|p{6cm}|}
+  \hline
+  {\bf Wyśrodkowanie} & {\bf Do lewej} & {\bf Paragraf} \\
+  \hline
+  \hline
+  Treść & Treść & Treść \\
+  \hline
+  Kolejny wiersz & Kolejnuy wiersz &
+  Żyjący w V wieku p.n.e.~prorok Malachiasz był autorem Księgi Malachiasza, będącej
+  ostatnią w grupie dwunastu ksiąg proroków mniejszych Starego Testamentu. \\
+  \hline
+  \end{tabular}
+\caption{Tabela z dłuższym tekstem}
+\label{tab:paragraf}
+\end{table}
+
+Na rysunku \ref{sinus} jest przedstawiony wykres funkcji sin(x).  W tablicach
+\ref{tab:bez_ramek}, \ref{tab:pionowe}, \ref{tab:ramki}, \ref{tab:paragraf}
+mamy przykłady zastosowania środowiska \verb#tabular#.
+
+Odwołanie do literatury -- pierwsza pozycja w spisie \cite{Wikipedia}, moja strona
+domowa \cite{RJW}.
+
+\begin{figure}[htb!p]
+% \includegraphics[width=0.9\textwidth]{sinus.pdf}
+\caption{Wykres funkcji sin(x)}
+\label{sinus}
+\end{figure}
+
+\begin{thebibliography}{9}
+\bibitem{Wikipedia} {\it Pauli matrices}
+  (\url{http://en.wikipedia.org/wiki/Pauli_matrices}).
+\bibitem{RJW} {\it Moja strona} (\url{http://www.fuw.edu.pl/~rwys}).
+\end{thebibliography}
+
+\end{document}
