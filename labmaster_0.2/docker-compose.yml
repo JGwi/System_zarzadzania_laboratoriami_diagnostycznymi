@@ -7,8 +7,8 @@ services:
       - 8080:8080
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/labmaster?autoReconnect=true&allowPublicKeyRetrieval=true&true&useSSL=false
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD:
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: root
     depends_on:
       - db
 
@@ -17,7 +17,7 @@ services:
     environment:
       DATABASE_HOST: docker-mysql
       DATABASE_PORT: 3306
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
       MYSQL_DATABASE: labmaster
-      MYSQL_USER: root
-      MYSQL_PASSWORD:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
