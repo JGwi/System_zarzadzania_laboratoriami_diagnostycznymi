@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApplicationController {
 
     @GetMapping("testAPI")
-    public String testMethod() {return "Działam poprawnie dfdf";}
+    public String testMethod() {return "Działam poprawnie ";}
 }
 
