@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/docker")
 public class ApplicationController {
 
-    @GetMapping("testAPI")
-    public String testMethod() {return "Działam poprawnie ";}
+    @GetMapping("/testAPI")
+    public String testMethod() {
+        return "Działam poprawnie ";
+    }
+
 }
 

@@ -1,0 +1,55 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz Rejestracji</title>
+    <link rel="stylesheet" th:href="@{../css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <div class="message" if="${message != null}">
+        [[${message}]]
+    </div>
+    <h2>Formularz Rejestracji</h2>
+    <form
+            action="@{/rejestracja}"
+            method="post"
+            role="form"
+            object="${user}"
+    >
+        <div class="form-group">
+            <label for="surname">Nazwisko:</label>
+            <input field="*{surname}" type="text" id="surname" name="surname" placeholder="Nazwisko" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Imię:</label>
+            <input field="*{name}" type="text" id="name" name="name" placeholder="Imię" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input field="*{email}" type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Telefon:</label>
+            <input field="*{phone}" type="tel" id="phone" name="phone" placeholder="Telefon" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Hasło:</label>
+            <input field="*{password}" type="password" id="password" name="password" placeholder="Hasło" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm-password">Potwierdź Hasło:</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Potwierdź Hasło" required>
+            <div class="message" id="password-message"></div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Zarejestruj">
+        </div>
+    </form>
+
+</div>
+
+
+</body>
+</html>
