@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>dashboard</title>
@@ -7,10 +7,10 @@
 <body>
 <h1>dashboard</h1>
 
-<a href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>
+<h3 th:inline="text">Welcome <span sec:authentication="principal.username"></span></h3>
 
-<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
-    <input hidden type="submit" value="Sign Out"/>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout" />
 </form>
 
 </body>

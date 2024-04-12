@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 public class Employees {
 
     private Long id;
+    private User user;
     private String imie;
     private String nazwisko;
     private String email;
@@ -25,6 +26,14 @@ public class Employees {
         this.id = id;
     }
 
+    @OneToOne
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getImie() {
         return imie;

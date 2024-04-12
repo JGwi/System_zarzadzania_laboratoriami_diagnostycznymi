@@ -33,3 +33,22 @@ Przy użyciu lokalnej bazy danych MySQL:
 
 (Tymczasowe dane do logowania Username: user, Password: user1Pass
 !!!!!!!!!!! Dane do logowania zostaną zmienione w przysłości !!!!!!!!!)
+
+
+    SEKCJA 'LABMASTER_03'
+Prz logowaniu się do projektu konieczne jest najpier stworzenie urzytkowników.
+
+1. Nadpisysanie bazy danych
+- Jeśli stworzyłeś już bazę danych MySQL zawirającą tabelki wegłóg starszej wersji projeku, koniecze jest nadpisanie ich dla zapewnienie zgodności z nową wersją
+- w pliku 'application.properties', w częśći 'spring.jpa.hibernate.ddl-auto=' odpowiedzialnej za działanie mechanizmu generowania schematu bazy danych, tymczasowo zmień ustawienie z 'update' na 'create'. W ten sposub  istniejące tabele są usuwane, a nowe są tworzone zgodnie z aktualnym modelem danych. 
+- W panelu bazy danych mysql nalerzy podać konedę:
+
+INSERT INTO `users` (`username`,`password`,`role`,`enabled`)
+VALUES ('namhm',
+'$2a$10$XptfskLsT1l/bRTLRiiCgejHqOpgXFreUnNUa35gJdCr2v2QbVFzu',
+'ROLE_USER', 1);
+
+Stworzy on aktywne konto urzytkownika o nazwie "namhm", haśle "codejava" i roli "USER"
+
+- Uruchom projekt i sprawdź poprawnośc logowania;
+(UWAGA - nie zapomnij by w pliku 'application.properties' przywrućić poprzednich ustaweń spowrotem na 'update'; w przeciwnym wykadku zakarzdym razem gdy projekt jest uruchomiony stracisz dane urzytkowników )

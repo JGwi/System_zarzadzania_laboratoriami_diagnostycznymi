@@ -9,7 +9,7 @@ public class User {
     private Long id;
     private String username;
     private String password;
-    private String name;
+    private String role;
     private boolean enabled;
 
 
@@ -40,12 +40,12 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getRole() {
+        return role;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public boolean isEnabled() {
