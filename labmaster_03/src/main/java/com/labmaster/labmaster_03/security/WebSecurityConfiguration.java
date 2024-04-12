@@ -24,26 +24,20 @@ public class WebSecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    private UserDetailsService customUserDetailsService;
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
+
+    @Bean
+    public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
+        UserDetails user1 = User.withUsername("user1")
+                .password(passwordEncoder.encode("user1Pass"))
+                .roles("USER")
+                .build();
+        UserDetails admin = User.withUsername("admin")
+                .password(passwordEncoder.encode("adminPass"))
+                .roles("ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(user1, admin);
     }
-
-//    @Bean
-//    public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
-//        UserDetails user1 = User.withUsername("user1")
-//                .password(passwordEncoder.encode("user1Pass"))
-//                .roles("USER")
-//                .build();
-//        UserDetails admin = User.withUsername("admin")
-//                .password(passwordEncoder.encode("adminPass"))
-//                .roles("ADMIN")
-//                .build();
-//        return new InMemoryUserDetailsManager(user1, admin);
-//    }
 
 
     @Bean
