@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 public class WebSecurityConfiguration {
@@ -34,10 +35,15 @@ public class WebSecurityConfiguration {
         http
                 .authorizeRequests(authz -> authz
                         .requestMatchers("/").permitAll()
-                        .anyRequest().hasRole("USER"))
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/recepcja/**").hasRole("REC")
+                        .requestMatchers("/ksiegowosc/**").hasRole("ACC")
+                        .requestMatchers("/laboratorium/**").hasRole("LAB")
+                        .requestMatchers("dashboard").hasRole("USER")
+                        .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
-                        .defaultSuccessUrl("/dashboard")
+                        .defaultSuccessUrl("/default")
                         .permitAll())
                 .logout((logout) -> logout
                         .logoutUrl("/logout")

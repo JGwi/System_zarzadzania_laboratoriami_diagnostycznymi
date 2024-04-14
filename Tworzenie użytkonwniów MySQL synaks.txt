@@ -1,0 +1,37 @@
+KONTO TESTOWE:
+INSERT INTO `users` (`username`,`password`,`role`,`enabled`)
+VALUES ('namhm',
+'$2a$10$XptfskLsT1l/bRTLRiiCgejHqOpgXFreUnNUa35gJdCr2v2QbVFzu',
+'ROLE_USER', 1);
+
+UŻYTKOWNIK:namhm HASŁO:codejava
+///////////////////////////////
+
+INSERT INTO `users` (`username`,`password`,`role`,`enabled`)
+VALUES ('rec1',
+'$2a$10$8HURDm1cF6YQUfrHhhOET.AZ8S1R836o/z0Qz2kDE59ISbdO6QcTu',
+'ROLE_REC', 1);
+
+INSERT INTO `users` (`username`,`password`,`role`,`enabled`)
+VALUES ('lab1',
+'$2a$10$BJC5zJrcFRX/5szqVsbeIesUFH3XHclDuNIk.YNrp09z0JmlDSEHC',
+'ROLE_LAB', 1);
+
+INSERT INTO `users` (`username`,`password`,`role`,`enabled`)
+VALUES ('acc1',
+'$2a$10$wUHZ7kHB.HzD1RQbaMYh/elcgI5.bIarVmJ1Fxp47m/HGlcnvZbPi',
+'ROLE_ACC', 1);
+
+INSERT INTO `users` (`username`,`password`,`role`,`enabled`)
+VALUES ('admin1',
+'$2a$10$1BBR2VLienrA5DX55mRaQOrQj1ZToOtvT.MYPKTlqCF.2gq15MpOK',
+'ROLE_ADMIN', 1);
+
+
+/////////////////////////////
+Hasła dla użytkowników stanowią ich nazwy(np. nik: rec1 hasło: rec1)
+SPROSTOWANIE:
+"acc" - skrót od "accounting" (księgowość)
+"lab" - skrót od "laboratory" (laboratorium)
+"rec" - skrót od "reception" (recepcja)
+"admin" - skrót od "administration" (administracja)
