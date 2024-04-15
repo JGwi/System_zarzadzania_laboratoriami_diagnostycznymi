@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>hhhh page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto rounded border p-4 m-4">
+            <h2 class="text-center mb-5">Edytuj pacjenta</h2>
+
+            <form method="post" enctype="multipart/form-data" th:object="${patientDto}">
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">ID</label>
+                    <div class="col-sm-8">
+                        <input readonly class="form-control-plaintext" th:value="${patient.id}">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Nazwisko</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" th:field="${patientDto.nazwisko}">
+                        <p th:if="${#fields.hasErrors('nazwisko')}" th:errorclass="text-danger"
+                           th:errors="${patientDto.nazwisko}"></p>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Imię</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" th:field="${patientDto.imie}">
+                        <p th:if="${#fields.hasErrors('imie')}" th:errorclass="text-danger"
+                           th:errors="${patientDto.imie}"></p>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">PESEL</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" maxlength="11" th:field="${patientDto.pesel}">
+                        <p th:if="${#fields.hasErrors('pesel')}" th:errorclass="text-danger"
+                           th:errors="${patientDto.pesel}"></p>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Numer telefonu</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="tel" minlength="9"
+                               maxlength="14" value="333-4444-4444" th:field="${patientDto.nr_telefonu}">
+                        <p th:if="${#fields.hasErrors('nr_telefonu')}" th:errorclass="text-danger"
+                           th:errors="${patientDto.nr_telefonu}"></p>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Data urodzenia</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="date" min="1900-01-01" th:field="${patientDto.data_ur}">
+                        <p th:if="${#fields.hasErrors('data_ur')}" th:errorclass="text-danger"
+                           th:errors="${patientDto.data_ur}"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="offset-sm-4 col-sm-4 d-grid">
+                        <button type="submit" class="btn btn-primary">Edytuj</button>
+                    </div>
+                    <div class="col-sm-4 d-grid">
+                        <a class="btn btn-outline-primary" href="/patients" role="button">Anuluj</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

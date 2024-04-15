@@ -35,6 +35,7 @@ public class WebSecurityConfiguration {
         http
                 .authorizeRequests(authz -> authz
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/patients/create").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/recepcja/**").hasRole("REC")
                         .requestMatchers("/ksiegowosc/**").hasRole("ACC")

@@ -1,23 +1,11 @@
 package com.labmaster.labmaster_03.controllers;
 
-import com.labmaster.labmaster_03.entities.Patient;
-import com.labmaster.labmaster_03.service.PatientService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
 
 @Controller
 public class DashboardController {
-    private final PatientService patientService;
-
-    public DashboardController(PatientService patientService) {
-        this.patientService = patientService;
-    }
-
-
     @GetMapping("/")
     public String rootView () {
         return "index";
@@ -43,11 +31,7 @@ public class DashboardController {
 
 
     @GetMapping("/admin/dashboard")
-    public String dashboardAdmin(Model model){
-
-        List<Patient> patients = patientService.getAllPatients();
-        model.addAttribute("patients", patients);
-
+    public String dashboardAdmin(){
         return "dashboard_admin";
     }
 
