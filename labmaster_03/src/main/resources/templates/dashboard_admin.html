@@ -10,6 +10,32 @@
 
 <h3 th:inline="text">Welcome <span sec:authentication="principal.username"></span></h3>
 
+
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Data urodzenia</th>
+        <th>Pesel</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Numer telefonu</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Pobranie i wyświetlenie rekordów pacjentów z bazy danych -->
+    <tr th:each="patient : ${patients}">
+        <td th:text="${patient.id}"></td>
+        <td th:text="${patient.data_ur}"></td>
+        <td th:text="${patient.pesel}"></td>
+        <td th:text="${patient.imie}"></td>
+        <td th:text="${patient.nazwisko}"></td>
+        <td th:text="${patient.nr_telefonu}"></td>
+    </tr>
+    </tbody>
+</table>
+
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Logout" />
 </form>
