@@ -28,7 +28,8 @@ public class PatientController {
         return "patients/patient-data";
     }
 
-    @GetMapping({"/create"})
+    @GetMapping(value = "/create")
+
     public String showCreatePage(Model model) {
         PatientDto patientDto = new PatientDto();
         model.addAttribute("patientDto", patientDto);
@@ -81,7 +82,7 @@ public class PatientController {
         return "patients/EditPatien";
     }
 
-    @PostMapping("/edit")
+    @PostMapping(path = "/edit")
     public String updatePatient(
             Model model,
             @RequestParam int id,

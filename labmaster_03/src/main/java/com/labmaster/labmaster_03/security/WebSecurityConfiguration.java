@@ -34,8 +34,8 @@ public class WebSecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authz -> authz
-                        .requestMatchers("/").permitAll()
-                        .requestMatchers("/patients/create").permitAll()
+                        .requestMatchers("/","/patients/**","/error").permitAll()
+                        .requestMatchers("/patients").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/recepcja/**").hasRole("REC")
                         .requestMatchers("/ksiegowosc/**").hasRole("ACC")

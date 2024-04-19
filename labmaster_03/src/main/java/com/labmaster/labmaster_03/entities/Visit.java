@@ -2,15 +2,14 @@ package com.labmaster.labmaster_03.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-
+import java.time.LocalDateTime; // Zmieniono import na LocalDateTime
 
 @Entity
 public class Visit {
 
     private int id;
     private Patient patient;
-    private LocalDate data_godzina;
+    private LocalDateTime data_godzina; // Zmieniono typ pola na LocalDateTime
     private String typ_wizyty;
     private String inne_Inf;
 
@@ -33,11 +32,11 @@ public class Visit {
         this.patient = patient;
     }
 
-    public LocalDate getData_godzina() {
+    public LocalDateTime getData_godzina() {
         return data_godzina;
     }
 
-    public void setData_godzina(LocalDate data_godzina) {
+    public void setData_godzina(LocalDateTime data_godzina) {
         this.data_godzina = data_godzina;
     }
 

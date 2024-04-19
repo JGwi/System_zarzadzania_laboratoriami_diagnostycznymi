@@ -35,3 +35,4 @@ SPROSTOWANIE:
 "lab" - skrót od "laboratory" (laboratorium)
 "rec" - skrót od "reception" (recepcja)
 "admin" - skrót od "administration" (administracja)
+
