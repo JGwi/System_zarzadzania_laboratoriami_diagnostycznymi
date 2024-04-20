@@ -14,6 +14,14 @@ public class Patient {
     private String nr_telefonu;
     private LocalDate data_ur;
 
+//    public Patient(String nazwisko, String imie, Long pesel, String nr_telefonu, LocalDate data_ur) {
+//        this.nazwisko = nazwisko;
+//        this.imie = imie;
+//        this.pesel = pesel;
+//        this.nr_telefonu = nr_telefonu;
+//        this.data_ur = data_ur;
+//    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {

@@ -3,41 +3,131 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Main page</title>
+    <title>Dodawanie pacjenta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: #06004F;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #99B333;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 300px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+
+}
+
+    </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/" style="color: #06004F;">[LabMaster-LOGO]</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" class="btn btn btn-lg" role="button"
+                           style="color: #06004F; background-color: #FFE600;" value="Logout"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- The sidebar -->
+<div class="sidebar">
+    <a class="nav-item nav-link disabled>LabMaster">LabMaster</a>
+    <a class="active" href="/recepcja/dashboard">Panel kontroli</a>
+    <a href="#">Umówienia</a>
+    <a href="#">Wyniki badań</a>
+    <!--    <a href="#">Opcja2</a>-->
+    <!--    <a href="#">Opcja4</a>-->
+</div>
+
+<div class="content">
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto rounded border p-4 m-4">
             <h2 class="text-center mb-5">Zarejestruj pacjenta</h2>
 
-            <form method="post" enctype="multipart/form-data" th:object="${patientDto}">
+            <form action="#" th:action="@{/recepcja/patients/savePatient}" th:object="${patient}" method="POST" class="was-validated">
+
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Nazwisko</label>
                     <div class="col-sm-8">
-                        <input class="form-control" th:field="${patientDto.nazwisko}">
-                        <p th:if="${#fields.hasErrors('nazwisko')}" th:errorclass="text-danger"
-                           th:errors="${patientDto.nazwisko}"></p>
+                        <input type="text" class="form-control is-invalid" th:field="*{nazwisko}" required>
+                        <div class="valid-feedback">✦</div>
+                        <div class="invalid-feedback">Nazwisko jest wymagane.</div>
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Imię</label>
                     <div class="col-sm-8">
-                        <input class="form-control" th:field="${patientDto.imie}">
-                        <p th:if="${#fields.hasErrors('imie')}" th:errorclass="text-danger"
-                           th:errors="${patientDto.imie}"></p>
+                        <input class="form-control" th:field="*{imie}" required>
+                        <div class="valid-feedback">✦</div>
+                        <div class="invalid-feedback">Imię jest wymagane.</div>
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">PESEL</label>
                     <div class="col-sm-8">
-                        <input class="form-control" maxlength="11" th:field="${patientDto.pesel}">
-                        <p th:if="${#fields.hasErrors('pesel')}" th:errorclass="text-danger"
-                           th:errors="${patientDto.pesel}"></p>
+                        <input class="form-control" maxlength="11" th:field="*{pesel}" required>
+                        <div class="valid-feedback">✦</div>
+                        <div class="invalid-feedback">PESEL jest wymagany</div>
                     </div>
                 </div>
 
@@ -45,27 +135,27 @@
                     <label class="col-sm-4 col-form-label">Numer telefonu</label>
                     <div class="col-sm-8">
                         <input class="form-control" type="tel" minlength="9"
-                               maxlength="14" value="333-4444-4444" th:field="${patientDto.nr_telefonu}">
-                        <p th:if="${#fields.hasErrors('nr_telefonu')}" th:errorclass="text-danger"
-                           th:errors="${patientDto.nr_telefonu}"></p>
+                               maxlength="14" value="333-444-444" th:field="*{nr_telefonu}" required>
+                        <div class="valid-feedback">✦</div>
+                        <div class="invalid-feedback">Numer telefonu jest wymagany.</div>
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Data urodzenia</label>
                     <div class="col-sm-8">
-                        <input class="form-control" type="date" min="1900-01-01" th:field="${patientDto.data_ur}">
-                        <p th:if="${#fields.hasErrors('data_ur')}" th:errorclass="text-danger"
-                           th:errors="${patientDto.data_ur}"></p>
+                        <input class="form-control" type="date" min="1900-01-01" th:field="*{data_ur}" required>
+                        <div class="valid-feedback">✦</div>
+                        <div class="invalid-feedback">Data urodzenia jest wymagana.</div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="offset-sm-4 col-sm-4 d-grid">
-                        <button type="submit" class="btn btn-primary">Zarejestruj</button>
+                        <button type="submit" class="btn btn-primary" style="color: #06004F; border-color: #99B333; background-color: #99B333;">Zarejestruj</button>
                     </div>
                     <div class="col-sm-4 d-grid">
-                        <a class="btn btn-outline-primary" href="/patients" role="button">Anuluj</a>
+                        <a class="btn btn-outline-success" href="/recepcja/patients" role="button" style="color: #06004F; border-color: #99B333; ">Anuluj</a>
                     </div>
                 </div>
 
@@ -74,8 +164,21 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+</div>
+<footer class="footer fixed-bottom">
+    <div class="text-center p-3" style="background-color: #06004F; ">
+        © 2020 Copyright:
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 </body>
 </html>
