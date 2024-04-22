@@ -5,12 +5,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import javax.swing.*;
 import java.math.BigDecimal;
 import java.time.LocalTime;
 
 @Entity
 public class Test_types {
     private int id;
+    private Spring type;
     private BigDecimal koszt;
     private LocalTime czas_wykonania;
 
@@ -22,6 +24,14 @@ public class Test_types {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Spring getType() {
+        return type;
+    }
+
+    public void setType(Spring type) {
+        this.type = type;
     }
 
     public BigDecimal getKoszt() {
