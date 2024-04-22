@@ -8,40 +8,41 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/recepcja/visits")
 public class VisitController {
     @Autowired
     private VisitService visitService;
 
-    @GetMapping("/visit")
+    @GetMapping({"","/"})
     public String viewVisitPage(Model model) {
         model.addAttribute("listVisits", visitService.getAllVisits());
-        return "visit";
+        return "visits/visit";
     }
 
-    @GetMapping("/showNewVisitForm")
+    @GetMapping("/create")
     public String showNewVisitForm(Model model) {
         Visit visit = new Visit();
         model.addAttribute("visit", visit);
-        return "new_visit";
+        return "visits/new_visit";
     }
 
     @PostMapping("/saveVisit")
     public String saveEmployee(@ModelAttribute("visit") Visit visit) {
         // save employee to database
         visitService.saveVisit(visit);
-        return "redirect:/visit";
+        return "redirect:/visits/visit";
     }
 
-    @GetMapping("/showFormForUpdate/{id}")
+    @GetMapping("/edit/{id}")
     public String showFromForUpdate(@PathVariable(value = "id")Integer id, Model model){
         Visit visit = visitService.getVisitById(id);
         model.addAttribute("visit", visit);
-        return "update_visit";
+        return "visits/update_visit";
     }
 
-    @GetMapping("/deleteVisit/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteVisit(@PathVariable(value = "id")Integer id){
         this.visitService.deleteVisitById(id);
-        return "redirect:/visit";
+        return "redirect:/visits/visit";
     }
 }

@@ -90,7 +90,7 @@ div.content {
 <div class="sidebar">
     <a class="nav-item nav-link disabled>LabMaster">LabMaster</a>
     <a class="active" href="/recepcja/dashboard">Panel kontroli</a>
-    <a href="#">Umówienia</a>
+    <a href="/recepcja/visits">Umówienia</a>
     <a href="#">Wyniki badań</a>
     <!--    <a href="#">Opcja2</a>-->
     <!--    <a href="#">Opcja4</a>-->
@@ -98,8 +98,11 @@ div.content {
 
 <div class="content">
 <div class="container">
+    <h1>Visit Management System</h1>
+    <hr>
     <div class="row">
         <div class="col-md-8 mx-auto rounded border p-4 m-4">
+
             <h2 class="text-center mb-5">Zarejestruj pacjenta</h2>
 
             <form action="#" th:action="@{/recepcja/patients/savePatient}" th:object="${patient}" method="POST" class="was-validated">
