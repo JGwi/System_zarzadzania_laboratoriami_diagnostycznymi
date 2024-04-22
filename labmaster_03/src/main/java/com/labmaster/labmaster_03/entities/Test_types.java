@@ -12,7 +12,7 @@ import java.time.LocalTime;
 @Entity
 public class Test_types {
     private int id;
-    private Spring type;
+    private String type;
     private BigDecimal koszt;
     private LocalTime czas_wykonania;
 
@@ -26,11 +26,11 @@ public class Test_types {
         this.id = id;
     }
 
-    public Spring getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Spring type) {
+    public void setType(String type) {
         this.type = type;
     }
 
