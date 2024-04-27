@@ -10,7 +10,6 @@ public class Sample {
     private Visit visit;
     private String typ_probki;
     private LocalDate Data_pobrania;
-    private User user;
     private String stan;
     private String uwagi;
 
@@ -49,14 +48,6 @@ public class Sample {
         Data_pobrania = data_pobrania;
     }
 
-    @ManyToOne
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public String getStan() {
         return stan;

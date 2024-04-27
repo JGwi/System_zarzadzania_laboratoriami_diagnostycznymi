@@ -13,7 +13,7 @@
   <hr>
   <h2>Update Visit</h2>
 
-  <form action="#" th:action="@{/saveVisit}" th:object="${visit}" method="POST">
+  <form action="#" th:action="@{/recepcja/visits/saveVisit}" th:object="${visit}" method="POST" class="was-validated">
 
     <!-- Add hidden form field to handle update -->
     <input type="hidden" th:field="*{id}" />

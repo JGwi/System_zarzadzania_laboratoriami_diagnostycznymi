@@ -13,6 +13,7 @@ public class Test {
     private Long nfz;
     private String zlecenidawca;
     private String wykonawca;
+    private String stan;
     private String uwagi;
 
     @Id
@@ -73,6 +74,14 @@ public class Test {
 
     public void setWykonawca(String wykonawca) {
         this.wykonawca = wykonawca;
+    }
+
+    public String getStan() {
+        return stan;
+    }
+
+    public void setStan(String stan) {
+        this.stan = stan;
     }
 
     public String getUwagi() {

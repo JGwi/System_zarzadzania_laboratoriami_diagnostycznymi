@@ -30,7 +30,7 @@ public class VisitController {
     public String saveEmployee(@ModelAttribute("visit") Visit visit) {
         // save employee to database
         visitService.saveVisit(visit);
-        return "redirect:/visits/visit";
+        return "redirect:/recepcja/visits";
     }
 
     @GetMapping("/edit/{id}")

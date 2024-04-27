@@ -113,7 +113,7 @@ div.content {
         <hr>
         <h2>Dodaj wizyte</h2>
 
-        <form action="#" th:action="@{/saveVisit}" th:object="${visit}" method="POST" class="was-validated">
+        <form action="#" th:action="@{/recepcja/visits/saveVisit}" th:object="${visit}" method="POST" class="was-validated">
 
             <div class="mb-4 col-4">
                 <input type="text" class="form-control " th:field="*{patient}" placeholder="Podaj id pacjęta" required>
