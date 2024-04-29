@@ -1,14 +1,15 @@
 package com.labmaster.labmaster_03.controllers;
 
 import com.labmaster.labmaster_03.entities.Test;
-import com.labmaster.labmaster_03.entities.Visit;
+import com.labmaster.labmaster_03.entities.Test_types;
 import com.labmaster.labmaster_03.service.TestService;
-import com.labmaster.labmaster_03.service.VisitService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 @Controller
 @RequestMapping("/recepcja/tests")
 public class TestController {
@@ -47,5 +48,13 @@ public class TestController {
     public String deleteTest(@PathVariable(value = "id")Integer id){
         this.testService.deleteTestById(id);
         return "redirect:/tests/test";
+    }
+
+
+    @GetMapping("/form")
+    public String showForm(Model model) {
+        List<Test_types> testTypes = testService.getAllTestTypes();
+        model.addAttribute("testTypes", testTypes);
+        return "form";
     }
 }
