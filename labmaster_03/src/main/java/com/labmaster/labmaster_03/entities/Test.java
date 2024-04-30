@@ -11,7 +11,7 @@ public class Test {
     private Test_types test_types;
     private LocalDateTime wykonanie;
     private String nfz;
-    private String zlecenidawca;
+    private String zleceniodawca;
     private String wykonawca;
     private String stan;
     private String uwagi;
@@ -60,12 +60,12 @@ public class Test {
         this.nfz = nfz;
     }
 
-    public String getZlecenidawca() {
-        return zlecenidawca;
+    public String getZleceniodawca() {
+        return zleceniodawca;
     }
 
-    public void setZlecenidawca(String zlecenidawca) {
-        this.zlecenidawca = zlecenidawca;
+    public void setZleceniodawca(String zleceniodawca) {
+        this.zleceniodawca = zleceniodawca;
     }
 
     public String getWykonawca() {

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły</title>
+</head>
+<body>
+<h1>Szczegóły</h1>
+<div th:if="${test != null}">
+    <p>ID: <span th:text="${test.id}"></span></p>
+    <p>Typ badania: <span th:text="${test.test_types.type}"></span></p>
+    <p>Zleceniodawca: <span th:text="${test.zleceniodawca}"></span></p>
+    <p>Data badania: <span th:text="${test.wykonanie}"></span></p>
+    <p>Wykonawca: <span th:text="${test.wykonawca}"></span></p>
+
+</div>
+<div th:unless="${test != null}">
+    <p>No results found.</p>
+</div>
+</body>
+</html>
