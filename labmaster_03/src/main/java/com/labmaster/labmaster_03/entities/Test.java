@@ -10,7 +10,7 @@ public class Test {
     private Sample sample;
     private Test_types test_types;
     private LocalDateTime wykonanie;
-    private Long nfz;
+    private String nfz;
     private String zlecenidawca;
     private String wykonawca;
     private String stan;
@@ -52,11 +52,11 @@ public class Test {
         this.wykonanie = wykonanie;
     }
 
-    public Long getNfz() {
+    public String getNfz() {
         return nfz;
     }
 
-    public void setNfz(Long nfz) {
+    public void setNfz(String nfz) {
         this.nfz = nfz;
     }
 

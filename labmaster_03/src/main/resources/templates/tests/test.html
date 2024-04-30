@@ -103,36 +103,39 @@
 
     <div class="container">
         <h1 class="text-center my-4">Historia badań</h1>
-
-        <!--    <a class="btn btn-primary" href="/patients/create">Dodaj pacienta</a>-->
-        <a th:href="@{/recepcja/patients/create}" class="btn btn-primary btn-sm mb-3" style="color: #06004F; border-color: #99B333; background-color: #99B333;"> Dodaj pacienta </a>
+        <a th:href="@{/recepcja/tests/create}" class="btn btn-primary btn-sm mb-3" style="color: #06004F; border-color: #99B333; background-color: #99B333;"> Dodaj badanie </a>
 
         <table class="table">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Nazwisko</th>
-                <th>Imię</th>
-                <th>PESEL</th>
-                <th>Nr. Telefonu</th>
-                <th>Data Urodzenia</th>
-                <th>Opcje</th>
+                <th>Probka</th>
+                <th>Typ testu</th>
+                <th>Wykonanie</th>
+                <th>Nr.NFZ</th>
+                <th>zlecenidawca</th>
+                <th>wykonawca</th>
+                <th>Stan</th>
+                <th>Uwagi</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="patient : ${listPatient}">
-                <td th:text="${patient.id}"></td>
-                <td th:text="${patient.nazwisko}"></td>
-                <td th:text="${patient.imie}"></td>
-                <td th:text="${patient.pesel}"></td>
-                <td th:text="${patient.nr_telefonu}"></td>
-                <td th:text="${patient.data_ur.toString().substring(0,10)}"></td>
+            <tr th:each="test : ${listTests}">
+                <td th:text="${test.id}"></td>
+                <td th:text="${test.sample}"></td>
+                <td th:text="${test.test_types.type}"></td>
+                <td th:text="${test.wykonanie}"></td>
+                <td th:text="${test.nfz}"></td>
+                <td th:text="${test.zlecenidawca}"></td>
+                <td th:text="${test.wykonawca}"></td>
+                <td th:text="${test.stan}"></td>
+                <td th:text="${test.uwagi}"></td>
                 <td style="white=space:nowrap">
                     <a class="btn btn-primary btn-sm" style="color: #06004F; border-color: #99B333; background-color: #99B333;"
-                       th:href="@{/recepcja/patients/edit/{id}(id=${patient.id})}">Edit</a>
+                       th:href="@{/recepcja/tests/edit/{id}(id=${test.id})}">Edycja</a>
                     <a class="btn btn-danger btn-sm"
-                       th:href="@{/recepcja/patients/delete/{id}(id=${patient.id})}"
-                       onclick="return confirm('czy jesteś pewien?')">Delete</a>
+                       th:href="@{/recepcja/tests/delete/{id}(id=${test.id})}"
+                       onclick="return confirm('czy jesteś pewien?')">Usuń</a>
                 </td>
             </tr>
             </tbody>
