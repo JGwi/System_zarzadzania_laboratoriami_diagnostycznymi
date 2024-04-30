@@ -25,11 +25,13 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         Test test = new Test();
         test.setNfz("1-10-00023451-12");
         test.setTest_types(testService.findTestTypeByName("MOCZ"));
+        test.setWykonanie(LocalDateTime.now());
         testService.saveTest(test);
 
         Test test2 = new Test();
         test2.setNfz("2-10-00023451-13");
         test2.setTest_types(testService.findTestTypeByName("KREW"));
+        test2.setWykonanie(LocalDateTime.now());
         testService.saveTest(test2);
     }
 
