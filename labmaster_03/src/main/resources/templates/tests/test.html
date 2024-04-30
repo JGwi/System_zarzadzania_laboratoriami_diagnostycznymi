@@ -103,9 +103,7 @@
 
     <div class="container">
         <h1 class="text-center my-4">Historia badań</h1>
-
-        <!--    <a class="btn btn-primary" href="/tests/create">Dodaj pacienta</a>-->
-        <a th:href="@{/recepcja/tests/create}" class="btn btn-primary btn-sm mb-3" style="color: #06004F; border-color: #99B333; background-color: #99B333;"> Dodaj pacienta </a>
+        <a th:href="@{/recepcja/tests/create}" class="btn btn-primary btn-sm mb-3" style="color: #06004F; border-color: #99B333; background-color: #99B333;"> Dodaj badanie </a>
 
         <table class="table">
             <thead>
@@ -122,10 +120,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="test : ${listTest}">
+            <tr th:each="test : ${listTests}">
                 <td th:text="${test.id}"></td>
                 <td th:text="${test.sample}"></td>
-                <td th:text="${test.test_types}"></td>
+                <td th:text="${test.test_types.type}"></td>
                 <td th:text="${test.wykonanie}"></td>
                 <td th:text="${test.nfz}"></td>
                 <td th:text="${test.zlecenidawca}"></td>
@@ -134,10 +132,10 @@
                 <td th:text="${test.uwagi}"></td>
                 <td style="white=space:nowrap">
                     <a class="btn btn-primary btn-sm" style="color: #06004F; border-color: #99B333; background-color: #99B333;"
-                       th:href="@{/recepcja/tests/edit/{id}(id=${test.id})}">Edit</a>
+                       th:href="@{/recepcja/tests/edit/{id}(id=${test.id})}">Edycja</a>
                     <a class="btn btn-danger btn-sm"
                        th:href="@{/recepcja/tests/delete/{id}(id=${test.id})}"
-                       onclick="return confirm('czy jesteś pewien?')">Delete</a>
+                       onclick="return confirm('czy jesteś pewien?')">Usuń</a>
                 </td>
             </tr>
             </tbody>

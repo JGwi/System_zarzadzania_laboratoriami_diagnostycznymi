@@ -98,7 +98,7 @@
 
 <div class="content">
     <div class="container">
-        <h1>Visit Management System</h1>
+        <h1>Centrum badań</h1>
         <hr>
         <div class="row">
             <div class="col-md-8 mx-auto rounded border p-4 m-4">
@@ -119,7 +119,7 @@
                         <label class="col-sm-4 col-form-label">Typ testu</label>
                         <div class="col-sm-8">
                             <select class="form-select" th:field="*{test_types}" required>
-                                <option value="">Wybież typ testu</option>
+                                <option value="">Wybierz typ testu</option>
                                 <option th:each="testType : ${testTypes}" th:value="${testType.id}" th:text="${testType.type}"></option>
                             </select>
                             <div class="valid-feedback">✦</div>

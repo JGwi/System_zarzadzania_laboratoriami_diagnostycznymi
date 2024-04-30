@@ -25,6 +25,7 @@ public class TestController {
 
     @GetMapping("/create")
     public String showNewTestForm(Model model) {
+        model.addAttribute("testTypes", testService.getAllTestTypes());
         Test test = new Test();
         model.addAttribute("test", test);
         return "tests/new_test";
@@ -32,7 +33,6 @@ public class TestController {
 
     @PostMapping("/saveTest")
     public String saveTest(@ModelAttribute("test") Test test) {
-        // save Test to database
         testService.saveTest(test);
         return "redirect:/recepcja/tests";
     }

@@ -35,6 +35,11 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
+    public void saveTestType(Test_types testTypes) {
+        testTypesRepository.save(testTypes);
+    }
+
+    @Override
     public Test getTestById(Integer id) {
         Optional < Test > optional = testRepository.findById(id);
         Test test = null;
