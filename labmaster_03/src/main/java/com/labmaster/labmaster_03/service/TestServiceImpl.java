@@ -42,7 +42,7 @@ public class TestServiceImpl implements TestService {
     @Override
     public Test getTestById(Integer id) {
         Optional < Test > optional = testRepository.findById(id);
-        Test test = null;
+        Test test;
         if (optional.isPresent()) {
             test = optional.get();
         } else {

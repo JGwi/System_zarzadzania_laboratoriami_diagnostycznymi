@@ -5,16 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import javax.swing.*;
 import java.math.BigDecimal;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Entity
 public class Test_types {
     private int id;
     private String type;
     private BigDecimal koszt;
-    private LocalTime czas_wykonania;
+    private LocalDateTime czas_wykonania;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,11 +41,11 @@ public class Test_types {
         this.koszt = koszt;
     }
 
-    public LocalTime getCzas_wykonania() {
+    public LocalDateTime getCzas_wykonania() {
         return czas_wykonania;
     }
 
-    public void setCzas_wykonania(LocalTime czas_wykonania) {
+    public void setCzas_wykonania(LocalDateTime czas_wykonania) {
         this.czas_wykonania = czas_wykonania;
     }
 }
