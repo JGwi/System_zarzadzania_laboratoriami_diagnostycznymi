@@ -131,6 +131,8 @@
                 <td th:text="${test.stan}"></td>
                 <td th:text="${test.uwagi}"></td>
                 <td style="white=space:nowrap">
+                    <a class="btn btn-info btn-sm" style="color: #06004F;" th:href="@{/recepcja/tests/details/{testId}(testId=${test.id})}">Szczegóły</a>
+
                     <a class="btn btn-primary btn-sm" style="color: #06004F; border-color: #99B333; background-color: #99B333;"
                        th:href="@{/recepcja/tests/edit/{id}(id=${test.id})}">Edycja</a>
                     <a class="btn btn-danger btn-sm"
