@@ -28,8 +28,8 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         testService.saveTest(test);
 
         Test test2 = new Test();
-        test.setNfz("2-10-00023451-13");
-        test.setTest_types(generateTestType("KREW"));
+        test2.setNfz("2-10-00023451-13");
+        test2.setTest_types(generateTestType("KREW"));
         testService.saveTest(test2);
     }
 
