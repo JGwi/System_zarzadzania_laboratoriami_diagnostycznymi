@@ -106,7 +106,7 @@
                 <h2 class="text-center mb-5">Nowe badanie</h2>
 
                 <form action="#" th:action="@{/recepcja/tests/saveTest}" th:object="${test}" method="POST" class="was-validated">
-
+                    <input type="hidden" th:field="*{wykonanie}">
                     <div class="row mb-3">
                         <label class="col-sm-4 col-form-label">Zleceniodawca</label>
                         <div class="col-sm-8">

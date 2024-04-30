@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -27,6 +28,7 @@ public class TestController {
     public String showNewTestForm(Model model) {
         model.addAttribute("testTypes", testService.getAllTestTypes());
         Test test = new Test();
+        test.setWykonanie(LocalDateTime.now());
         model.addAttribute("test", test);
         return "tests/new_test";
     }
