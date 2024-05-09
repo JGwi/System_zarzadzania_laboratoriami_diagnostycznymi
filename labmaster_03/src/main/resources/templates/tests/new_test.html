@@ -145,7 +145,14 @@ div.content {
                             <div class="invalid-feedback">Numer NFZ jest wymagany i powinien być w formacie 1-10-00023451-12.</div>
                         </div>
                     </div>
-
+                    <div class="row mb-3" hidden>
+                        <label class="col-sm-4 col-form-label">Stan</label>
+                        <div class="col-sm-8">
+                            <select class="form-select" th:field="*{stan}">
+                                <option value="do wykonania" selected>Do wykonania</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="offset-sm-4 col-sm-4 d-grid">
                             <button type="submit" class="btn btn-primary" style="color: #06004F; border-color: #99B333; background-color: #99B333;">Zarejestruj</button>
