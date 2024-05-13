@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+
+
+
 @RequestMapping("/recepcja/results")
 public class ResultsController {
     @Autowired

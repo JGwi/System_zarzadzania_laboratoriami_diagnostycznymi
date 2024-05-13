@@ -45,4 +45,7 @@ public class Schedule_labController {
         this.schedule_labService.deleteSchedule_labById(id);
         return "redirect:/laboratorium/schedule_labs/schedule_lab";
     }
+
+
+
 }

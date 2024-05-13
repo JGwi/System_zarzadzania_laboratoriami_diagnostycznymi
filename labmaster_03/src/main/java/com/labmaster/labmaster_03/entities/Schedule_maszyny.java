@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Entity
 public class Schedule_maszyny {
     private int id;
+    private String nazwa_maszyny;
     private String stan;
     private LocalDate data_roz;
     private LocalDate data_zak;
@@ -23,6 +24,14 @@ public class Schedule_maszyny {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNazwa_maszyny() {
+        return nazwa_maszyny;
+    }
+
+    public void setNazwa_maszyny(String nazwa_maszyny) {
+        this.nazwa_maszyny = nazwa_maszyny;
     }
 
     public String getStan() {
