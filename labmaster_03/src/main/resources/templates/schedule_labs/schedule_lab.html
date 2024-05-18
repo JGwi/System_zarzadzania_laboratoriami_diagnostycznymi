@@ -116,30 +116,30 @@ div.content {
                 <th>Rozpoczęcie</th>
                 <th>Zakończenie</th>
                 <th>Maczyny </th>
+                <th>User</th>
                 <th>Stan</th>
-<!--                <th>user_id</th>-->
                 <th> Actions</th>
             </tr>
 
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr th:each="schedule_lab : ${listSchedule_labs}">-->
-<!--                <td th:text="${schedule_lab.id}"></td>-->
-<!--                <td th:text="${schedule_lab.test.id}"></td>-->
-<!--                <td th:text="${schedule_lab.data_zlecenia}"></td>-->
-<!--                <td th:text="${schedule_lab.rozpoczecie}"></td>-->
-<!--                <td th:text="${schedule_lab.zakonczenie}"></td>-->
-<!--                <td th:text="${schedule_lab.schedule_maszyny.id}"></td>-->
-<!--                <td th:text="${schedule_lab.stan}"></td>-->
-<!--                <td th:text="${schedule_lab.users.id}"></td>-->
-<!--                <td>-->
-<!--                    <a th:href="@{/recepcja/visits/edit/{id}(id=${schedule_lab.id})}" class="btn btn-primary btn-sm"-->
-<!--                       style="color: #06004F; border-color: #99B333; background-color: #99B333;">Update</a>-->
-<!--                    <a class="btn btn-danger btn-sm" th:href="@{/recepcja/visits/delete/{id}(id=${schedule_lab.id})}"-->
-<!--                       onclick="return confirm('czy jesteś pewien?')">Delete</a>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
+            </thead>
+            <tbody>
+            <tr th:each="schedule_lab : ${listSchedule_labs}">
+                <td th:text="${schedule_lab.id}"></td>
+                <td th:text="${schedule_lab.test.id}"></td>
+                <td th:text="${schedule_lab.data_zlecenia}"></td>
+                <td th:text="${schedule_lab.rozpoczecie}"></td>
+                <td th:text="${schedule_lab.zakonczenie}"></td>
+                <td th:text="${schedule_lab.schedule_maszyny.id}"></td>
+                <td th:text="${schedule_lab.stan}"></td>
+                <td th:text="${schedule_lab.user.id}"></td>
+                <td>
+                    <a th:href="@{/recepcja/visits/edit/{id}(id=${schedule_lab.id})}" class="btn btn-primary btn-sm"
+                       style="color: #06004F; border-color: #C24388; background-color: #D94D99;">Update</a>
+                    <a class="btn btn-danger btn-sm" th:href="@{/recepcja/visits/delete/{id}(id=${schedule_lab.id})}"
+                       onclick="return confirm('czy jesteś pewien?')">Delete</a>
+                </td>
+            </tr>
+            </tbody>
 
         </table>
     </div>

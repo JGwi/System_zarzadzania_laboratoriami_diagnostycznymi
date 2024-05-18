@@ -1,16 +1,13 @@
 package com.labmaster.labmaster_03.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
 public class Schedule_maszyny {
     private int id;
-    private String nazwa_maszyny;
+    private DiagnosticMachines diagnosticMachines;
     private String stan;
     private LocalDate data_roz;
     private LocalDate data_zak;
@@ -26,12 +23,13 @@ public class Schedule_maszyny {
         this.id = id;
     }
 
-    public String getNazwa_maszyny() {
-        return nazwa_maszyny;
+    @OneToOne
+    public DiagnosticMachines getDiagnosticMachines() {
+        return diagnosticMachines;
     }
 
-    public void setNazwa_maszyny(String nazwa_maszyny) {
-        this.nazwa_maszyny = nazwa_maszyny;
+    public void setDiagnosticMachines(DiagnosticMachines diagnosticMachines) {
+        this.diagnosticMachines = diagnosticMachines;
     }
 
     public String getStan() {
