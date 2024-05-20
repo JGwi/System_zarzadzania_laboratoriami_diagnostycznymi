@@ -5,70 +5,80 @@
     <title>Maszyny diagnostyczne</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <style>
         body {
-          margin: 0;
-          font-family: "Lato", sans-serif;
+            margin: 0;
+            font-family: "Lato", sans-serif;
         }
-
         .sidebar {
-          margin: 0;
-          padding: 0;
-          width: 300px;
-          background-color: #f1f1f1;
-          position: fixed;
-          height: 100%;
-          overflow: auto;
+            margin: 0;
+            padding: 0;
+            width: 300px;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
         }
-
         .sidebar a {
-          display: block;
-          color: black;
-          padding: 16px;
-          text-decoration: none;
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
         }
-
         .sidebar a.active {
-          background-color: #04AA6D;
-          color: white;
+            background-color: #04AA6D;
+            color: white;
         }
-
         .sidebar a:hover:not(.active) {
-          background-color: #555;
-          color: white;
+            background-color: #555;
+            color: white;
         }
-
         div.content {
-          margin-left: 300px;
-          padding: 1px 16px;
-          height: 1000px;
+            margin-left: 300px;
+            padding: 1px 16px;
+            height: 1000px;
         }
-
         .button-container {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 10px;
-                }
-
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .card {
+            background-color: #d94d99;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            cursor: pointer;
+        }
         @media screen and (max-width: 700px) {
-          .sidebar {
-            width: 100%;
-            height: auto;
-            position: relative;
-          }
-          .sidebar a {float: left;}
-          div.content {margin-left: 0;}
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .sidebar a {float: left;}
+            div.content {margin-left: 0;}
         }
-
         @media screen and (max-width: 400px) {
-          .sidebar a {
-            text-align: center;
-            float: none;
-          }
+            .sidebar a {
+                text-align: center;
+                float: none;
+            }
         }
 
-    </style>
+        .usage-card {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        }
 
+        .usage-card .card {
+            flex: 0 0 30%; /* 30% szerokości dla każdej karty */
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light">
@@ -90,7 +100,7 @@
 </nav>
 
 <div class="sidebar">
-    <a class="nav-item nav-link disabled>LabMaster">LabMaster</a>
+    <a class="nav-item nav-link disabled">LabMaster</a>
     <a class="active" href="#" style="background-color: #D94D99;">Panel kontroli</a>
     <a href="#">Historia badań</a>
     <a href="#">Powiadomienia</a>
@@ -99,49 +109,106 @@
 </div>
 
 <div class="content">
-
     <div class="container">
         <h1 class="text-center my-4">Maszyny diagnostyczne</h1>
 
-        <form th:action="@{/laboratorium/schedule_labs/check}" method="post">
+        <form id="machineForm" th:action="@{/laboratorium/diagnostic_machines/check}" method="post" onsubmit="return fetchMachineInfo(event)">
             <div class="form-group">
                 <label for="machineSelect">Maszyna:</label>
                 <select class="form-control" id="machineSelect" name="machine">
-                    <!-- Użyj Thymeleaf do iteracji po liście maszyn zwróconych przez serwis -->
                     <option th:each="machine : ${machines}" th:value="${machine.id}" th:text="${machine.nazwaMaszyny + ', model: ' + machine.model}"></option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="currentState">Obecny stan maszyny:</label>
-                <input type="text" class="form-control" id="currentState" placeholder="Obecny stan maszyny">
-            </div>
-            <div class="form-group">
-                <label for="schedulePlan">Plan terminów pracy:</label>
-                <input type="text" class="form-control" id="schedulePlan" placeholder="Plan terminów pracy">
-            </div>
-            <button type="submit" class="btn btn-primary">SPRAWDŹ</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #d94d99; color: #fff; border: none;">SPRAWDŹ</button>
         </form>
 
-        <!-- Kafelki z informacjami o maszynie będą tutaj -->
+        <div id="machineInfo" class="mt-4">
+            <h2 class="text-center">Informacje o maszynie</h2>
+        </div>
 
+        <div id="usageList" class="mt-4">
+            <h2 class="text-center">Lista użyć maszyny</h2>
+        </div>
     </div>
-
 </div>
 
 <footer class="footer fixed-bottom">
-    <div class="text-center p-3" style="background-color: #06004F; ">
-        © 2024 Copyright: Jakub Gwiżdż
+    <div class="text-center p-3" style="background-color: #06004F; color: #fefefe">
+        © 2024 Copyright
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            todayHighlight: true,
+            autoclose: true
+        });
+    });
+
+    function fetchMachineInfo(event) {
+        event.preventDefault();
+        const machineId = document.getElementById('machineSelect').value;
+
+        $.ajax({
+            url: `/laboratorium/diagnostic_machines/${machineId}`,
+            type: 'GET',
+            success: function(data) {
+                const formattedDate = new Date(data.dataZakupu).toISOString().split('T')[0];
+
+                $('#machineInfo').html(`
+                    <h2 class="text-center" style="margin: 40px 0;">Informacje o maszynie</h2>
+
+                    <p><strong>Nazwa:</strong> ${data.nazwaMaszyny}</p>
+                    <p><strong>Model:</strong> ${data.model}</p>
+                    <p><strong>Producent:</strong> ${data.producent}</p>
+                    <p><strong>Rok produkcji:</strong> ${data.rokProdukcji}</p>
+                    <p><strong>Numer seryjny:</strong> ${data.numerSeryjny}</p>
+                    <p><strong>Cena:</strong> ${data.cenaZakupu} zł</p>
+                    <p><strong>Data zakupu:</strong> ${formattedDate}</p>
+                `);
+
+                // Fetching usage data
+                $.ajax({
+                    url: `/laboratorium/schedule_maszyny/${machineId}`,
+                    type: 'GET',
+                    success: function(usages) {
+
+                        const usageListHtml = usages.map(usage => `
+                            <div class="card">
+                                <div class="card-header" data-toggle="collapse" data-target="#usageDetails${usage.id}" aria-expanded="false">
+                                    <span><strong>Data od:</strong> ${usage.data_roz}</span>
+                                     <br>
+                                     <span><strong>Data do:</strong> ${usage.data_zak}</span>
+                                     <br>
+                                     <span><strong>Uwagi:</strong> ${usage.uwagi}</span>
+                                     <br>
+                                     <span><strong>Stan:</strong> ${usage.stan}</span>
+                                </div>
+                                <div id="usageDetails${usage.id}" class="collapse">
+                                    <div class="card-body">
+                                        <p><strong>Stan:</strong> ${usage.stan}</p>
+                                        <p><strong>Data zakończenia:</strong> ${usage.data_zak}</p>
+                                        <p><strong>Uwagi:</strong> ${usage.uwagi}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                        $('#usageList').html(`
+                            <h2 class="text-center" style="margin: 40px 0;">Lista użyć maszyny: <strong>${data.nazwaMaszyny}</strong></h2>
+                            <div class="usage-card">
+                                ${usageListHtml}
+                            </div>
+                        `);
+                    }
+                });
+            }
+        });
+        return false;
+    }
+</script>
 </body>
 </html>

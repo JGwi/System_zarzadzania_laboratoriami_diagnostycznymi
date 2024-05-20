@@ -1,6 +1,5 @@
 package com.labmaster.labmaster_03.service;
 
-import com.labmaster.labmaster_03.entities.Schedule_maszyny;
 import com.labmaster.labmaster_03.entities.DiagnosticMachines;
 import com.labmaster.labmaster_03.repositories.DiagnosticMachinesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +21,10 @@ public class DiagnosticMachinesServiceImpl implements DiagnosticMachinesService 
     @Override
     public DiagnosticMachines getMachineById(Integer id) {
         Optional<DiagnosticMachines> optional = machineRepository.findById(id);
-        DiagnosticMachines machine = null;
         if (optional.isPresent()) {
-            machine = optional.get();
+            return optional.get();
         } else {
             throw new RuntimeException("Maszyna nie została znaleziona przez id :: " + id);
         }
-        return machine;
     }
 }
