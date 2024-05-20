@@ -1,27 +1,24 @@
 package com.labmaster.labmaster_03.controllers;
-import com.labmaster.labmaster_03.entities.Schedule_maszyny;
+import com.labmaster.labmaster_03.entities.DiagnosticMachines;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.labmaster.labmaster_03.service.MachineService;
+import com.labmaster.labmaster_03.service.DiagnosticMachinesService;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+
 @Controller
+@RequestMapping("/laboratorium/diagnostic_machines")
 public class DiagnosticMachineController {
     @Autowired
-    private MachineService machineService;
+    private DiagnosticMachinesService diagnosticMachinesService;
 
-    @GetMapping("/laboratorium/diagnostic_machines")
-    public String showDiagnosticMachinesPage() {
-        return "machines/diagnostic_machines";
-    }
-
-    @GetMapping("/machines")
-    public String getMachines(Model model) {
-        List<Schedule_maszyny> machines = machineService.getAllMachines();
-        model.addAttribute("machines", machines);
+    @GetMapping({"", "/"})
+    public String showDiagnosticMachinesPage(Model model) {
+        model.addAttribute("machines", diagnosticMachinesService.getAllMachines());
         return "machines/diagnostic_machines";
     }
 }

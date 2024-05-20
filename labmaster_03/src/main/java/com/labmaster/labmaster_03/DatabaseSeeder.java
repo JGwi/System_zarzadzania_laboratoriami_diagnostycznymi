@@ -3,7 +3,6 @@ package com.labmaster.labmaster_03;
 import com.labmaster.labmaster_03.entities.DiagnosticMachines;
 import com.labmaster.labmaster_03.entities.User;
 import com.labmaster.labmaster_03.repositories.DiagnosticMachinesRepository;
-import com.labmaster.labmaster_03.repositories.MachineRepository;
 import com.labmaster.labmaster_03.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

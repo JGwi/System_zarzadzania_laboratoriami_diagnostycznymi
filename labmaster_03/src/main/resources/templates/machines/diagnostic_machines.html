@@ -108,7 +108,7 @@
                 <label for="machineSelect">Maszyna:</label>
                 <select class="form-control" id="machineSelect" name="machine">
                     <!-- Użyj Thymeleaf do iteracji po liście maszyn zwróconych przez serwis -->
-                    <option th:each="machine : ${machines}" th:value="${machine.id}" th:text="${machine.nazwa_maszyny}"></option>
+                    <option th:each="machine : ${machines}" th:value="${machine.id}" th:text="${machine.nazwaMaszyny + ', model: ' + machine.model}"></option>
                 </select>
             </div>
             <div class="form-group">
