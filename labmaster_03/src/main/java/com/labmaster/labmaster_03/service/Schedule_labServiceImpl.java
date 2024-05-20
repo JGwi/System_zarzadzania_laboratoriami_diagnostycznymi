@@ -39,6 +39,7 @@ public class Schedule_labServiceImpl implements Schedule_labService {
 
     @Override
     public void deleteSchedule_labById(Integer id){
+
         this.scheduleLabRepository.deleteById(id);
     }
 }

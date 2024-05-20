@@ -8,36 +8,41 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/recepcja/results")
-public class ResultsController {
+@RequestMapping("/laboratorium/results")
+public class ResultsControllerLab {
     @Autowired
     private ResultsService resultsService;
 
     @GetMapping({"", "/"})
-    public String viewResultPage(Model model) {
+    public String viewResultLabPage(Model model) {
         model.addAttribute("listResults", resultsService.getAllResult());
-        return "results/result";
+        return "results/resultLab";
     }
 
     @GetMapping("/create")
-    public String showNewResultForm(Model model) {
+    public String showNewResultLabForm(Model model) {
         Results results = new Results();
         model.addAttribute("result", results);
-        return "results/new_result";
+        return "results/new_resultLab";
     }
 
     @PostMapping("/saveResult")
-    public String saveResult(@ModelAttribute("result") Results results) {
+    public String saveResultLab(@ModelAttribute("result") Results results) {
         // save employee to database
         resultsService.saveResult(results);
-        return "redirect:/recepcja/results";
+        return "redirect:/laboratorium/results";
     }
 
     @GetMapping("/edit/{id}")
-    public String showFromForUpdate(@PathVariable(value = "id") Integer id, Model model) {
+    public String showFormForLabUpdate(@PathVariable(value = "id") Integer id, Model model) {
         Results results = resultsService.getResultById(id);
-        model.addAttribute("Results", results);
+        model.addAttribute("result", results);
         return "results/update_result";
     }
 
+    @DeleteMapping("/delete/{id}")
+    public String deleteLabResults(@PathVariable(value = "id") Integer id) {
+        this.resultsService.deleteResultById(id);
+        return "redirect:/results/resultLab";
+    }
 }
