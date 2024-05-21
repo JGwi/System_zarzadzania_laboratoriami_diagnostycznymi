@@ -65,7 +65,8 @@ public class TestController {
     @GetMapping("/form")
     public String showForm(Model model) {
         List<Test_types> testTypes = testService.getAllTestTypes();
-        model.addAttribute("testTypes", testTypes);
-        return "form";
+        model.addAttribute("testTypes", testTypes); // Change the attribute name to "testTypes"
+        return "tests/new_test";
     }
+
 }

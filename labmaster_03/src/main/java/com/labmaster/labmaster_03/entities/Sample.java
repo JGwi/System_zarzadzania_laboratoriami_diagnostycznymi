@@ -48,7 +48,6 @@ public class Sample {
         Data_pobrania = data_pobrania;
     }
 
-
     public String getStan() {
         return stan;
     }
