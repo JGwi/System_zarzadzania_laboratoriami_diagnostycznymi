@@ -22,22 +22,26 @@ public class SampleController {
     @GetMapping("/create")
     public String showNewSampleForm(Model model) {
         Sample sample = new Sample();
-        model.addAttribute("result", sample);
+        model.addAttribute("sample", sample);
         return "sample/new_result";
     }
 
     @PostMapping("/saveSample")
-    public String saveSample(@ModelAttribute("result") Sample sample) {
-        // save employee to database
+    public String saveSample(@ModelAttribute("sample") Sample sample) {
         sampleService.saveSample(sample);
         return "redirect:/laboratorium/sample";
     }
 
     @GetMapping("/edit/{id}")
-    public String showFromForUpdate(@PathVariable(value = "id") Integer id, Model model) {
+    public String showFormForUpdate(@PathVariable(value = "id") Integer id, Model model) {
         Sample sample = sampleService.getSampleById(id);
-        model.addAttribute("Sample", sample);
+        model.addAttribute("sample", sample);
         return "sample/update_result";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteSample(@PathVariable(value = "id") Integer id) {
+        sampleService.deleteSampleById(id);
+        return "redirect:/laboratorium/sample";
+    }
 }
