@@ -97,14 +97,14 @@
 <div class="content">
     <div class="container">
         <h1 class="text-center my-4">New Sample</h1>
-        <form th:action="@{/laboratorium/sample/saveSample}" th:object="${result}" method="post">
+        <form th:action="@{/laboratorium/sample/saveSample}" th:object="${sample}" method="post">
             <div class="form-group">
-                <label for="typ_probki">Typ Probki:</label>
-                <input type="text" class="form-control" id="typ_probki" th:field="*{typ_probki}" placeholder="Enter Typ Probki" required>
+                <label for="typProbki">Typ Probki:</label>
+                <input type="text" class="form-control" id="typProbki" th:field="*{typProbki}" placeholder="Enter Typ Probki" required>
             </div>
             <div class="form-group">
-                <label for="data_pobrania">Data Pobrania:</label>
-                <input type="date" class="form-control" id="data_pobrania" th:field="*{data_pobrania}" required>
+                <label for="dataPobrania">Data Pobrania:</label>
+                <input type="date" class="form-control" id="dataPobrania" th:field="*{dataPobrania}" required>
             </div>
             <div class="form-group">
                 <label for="stan">Stan:</label>
