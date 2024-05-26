@@ -68,11 +68,15 @@ div.content {
     float: none;
   }
 }
+
+.btn{
+    background-color: #04AA6D;
+}
 </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="/" style="color: #06004F;">[LabMaster-LOGO]</a>
+    <a class="navbar-brand" href="/admin/dashboard" style="color: #06004F;">[LabMaster-LOGO]</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -104,12 +108,10 @@ div.content {
 
 <h3 th:inline="text">Welcome <span sec:authentication="principal.username"></span></h3>
 
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Logout" />
-</form>
+
     <div class="button-container">
         <a class="btn btn-primary" href="/patients">Dane pacjentów</a>
-        <button class="button">Button 2</button>
+        <a class="btn btn-primary" href="/register">Dodaj pracownika</a>
         <button class="button">Button 3</button>
         <button class="button">Button 4</button>
     </div>
