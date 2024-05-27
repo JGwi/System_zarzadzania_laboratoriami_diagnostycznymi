@@ -1,4 +1,4 @@
-<!DOCTYPE html><!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
@@ -66,9 +66,7 @@
                 text-align: center;
                 float: none;
             }
-
         }
-
     </style>
 </head>
 <body>
@@ -93,11 +91,7 @@
 <!-- The sidebar -->
 <div class="sidebar">
     <a class="nav-item nav-link disabled>LabMaster">LabMaster</a>
-    <a class="active" href="/recepcja/dashboard">Panel kontroli</a>
-    <a href="/recepcja/visits">Umówienia</a>
-    <a href="#">Wyniki badań</a>
-    <!--    <a href="#">Opcja2</a>-->
-    <!--    <a href="#">Opcja4</a>-->
+    <a style="background-color: #04AA6D; color: #fefefe" href="/admin/dashboard">Panel kontroli</a>
 </div>
 
 <div class="content">
@@ -106,20 +100,16 @@
         <hr>
         <div class="row">
             <div class="col-md-8 mx-auto rounded border p-4 m-4">
-
                 <h2 class="text-center mb-5">Formularz rejestracyjny</h2>
-
-                <form action="#" th:action="@{/users}" method="POST" class="was-validated">
-
+                <form th:action="@{/admin/register}" method="POST" class="was-validated">
                     <div class="row mb-3">
                         <label class="col-sm-4 col-form-label">Login</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control is-invalid" name="login" required>
+                            <input type="text" class="form-control is-invalid" name="username" required>
                             <div class="valid-feedback">✦</div>
                             <div class="invalid-feedback">Login jest wymagany.</div>
                         </div>
                     </div>
-
                     <div class="row mb-3">
                         <label class="col-sm-4 col-form-label">Hasło</label>
                         <div class="col-sm-8">
@@ -128,39 +118,37 @@
                             <div class="invalid-feedback">Hasło jest wymagane.</div>
                         </div>
                     </div>
-
                     <div class="row mb-3">
                         <label class="col-sm-4 col-form-label">Rola</label>
                         <div class="col-sm-8">
                             <select class="form-select" name="role" required>
+                                <option value="ROLE_LAB">Laborant(-ka)</option>
+                                <option value="ROLE_REC">Recepcjonista(-ka)</option>
+                                <option value="ROLE_ACC">Księgowy(-a)</option>
                                 <option value="ADMIN">ADMIN</option>
-                                <option value="ROLE_LAB">ROLE_LAB</option>
-                                <option value="ROLE_REC">ROLE_REC</option>
-                                <option value="ROLE_ACC">ROLE_ACC</option>
                             </select>
                             <div class="valid-feedback">✦</div>
                             <div class="invalid-feedback">Rola jest wymagana.</div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="offset-sm-4 col-sm-4 d-grid">
-                            <button type="submit" class="btn btn-primary" style="color: #06004F; border-color: #99B333; background-color: #99B333;">Zarejestruj pracownika</button>
+                            <button type="submit" class="btn btn-primary" style="color: #fefefe; border-color: #99B333; background-color: #04AA6D;">Zarejestruj pracownika</button>
                         </div>
                     </div>
-
                 </form>
+                <div th:if="${param.success}" class="alert alert-success" role="alert" style="margin-top: 40px;">
+                    Rejestracja zakończona sukcesem!
+                </div>
             </div>
         </div>
     </div>
-
 </div>
 <footer class="footer fixed-bottom">
     <div class="text-center p-3" style="background-color: #06004F; ">
-        © 2020 Copyright:
+        © 2024 Copyright:
     </div>
 </footer>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

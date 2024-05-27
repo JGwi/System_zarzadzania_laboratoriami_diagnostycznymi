@@ -1,6 +1,5 @@
 package com.labmaster.labmaster_03.security;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,6 @@ import javax.sql.DataSource;
 @Configuration
 public class WebSecurityConfiguration {
 
-
     @Autowired
     private DataSource dataSource;
 
@@ -25,26 +23,25 @@ public class WebSecurityConfiguration {
                 .dataSource(dataSource)
                 .passwordEncoder(new BCryptPasswordEncoder())
                 .usersByUsernameQuery("select username, password, enabled from users where username=?")
-                .authoritiesByUsernameQuery("select username, role from users where username=?")
-        ;
+                .authoritiesByUsernameQuery("select username, role from users where username=?");
     }
-
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authz -> authz
+                        .requestMatchers("/admin/register").hasRole("ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/recepcja/**").hasRole("REC")
                         .requestMatchers("/ksiegowosc/**").hasRole("ACC")
                         .requestMatchers("/laboratorium/**").hasRole("LAB")
-                        .requestMatchers("dashboard").hasRole("USER")
+                        .requestMatchers("/dashboard").hasRole("USER")
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
                         .defaultSuccessUrl("/default")
                         .permitAll())
-                .logout((logout) -> logout
+                .logout(logout -> logout
                         .logoutUrl("/logout")
                         .permitAll());
         return http.build();
@@ -55,4 +52,3 @@ public class WebSecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 }
-

@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RegisterController {
     //@RequestMapping(value = "/login", method = RequestMethod.GET)
-    @GetMapping(value = "/register")
-    public String Register(){
-        return "register";
-    }
+//    @GetMapping(value = "/register")
+//    public String Register(){
+//        return "register";
+//    }
 }
