@@ -26,7 +26,8 @@ public class Employees {
         this.id = id;
     }
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
     }

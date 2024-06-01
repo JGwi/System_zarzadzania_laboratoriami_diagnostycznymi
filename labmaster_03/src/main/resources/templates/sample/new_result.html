@@ -98,6 +98,7 @@
     <div class="container">
         <h1 class="text-center my-4">New Sample</h1>
         <form th:action="@{/laboratorium/sample/saveSample}" th:object="${sample}" method="post">
+
             <div class="form-group">
                 <label for="typProbki">Typ Probki:</label>
                 <input type="text" class="form-control" id="typProbki" th:field="*{typProbki}" placeholder="Enter Typ Probki" required>

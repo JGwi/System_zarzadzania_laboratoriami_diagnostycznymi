@@ -28,7 +28,6 @@ public class ResultsController {
 
     @PostMapping("/saveResult")
     public String saveResult(@ModelAttribute("result") Results results) {
-        // save employee to database
         resultsService.saveResult(results);
         return "redirect:/recepcja/results";
     }
