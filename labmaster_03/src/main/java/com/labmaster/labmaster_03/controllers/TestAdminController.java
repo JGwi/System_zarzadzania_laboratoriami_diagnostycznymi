@@ -11,18 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 @Controller
-@RequestMapping("/recepcja/tests")
-public class TestController {
-
+@RequestMapping("/admin/tests")
+public class TestAdminController {
     @Autowired
     private TestService testService;
 
     @GetMapping({"", "/"})
     public String viewTestPage(Model model) {
         model.addAttribute("listTests", testService.getAllTests());
-        return "tests/test";
+        return "testsAdmin/testAdmin";
     }
 
     @GetMapping("/create")
@@ -37,7 +35,7 @@ public class TestController {
     @PostMapping("/saveTest")
     public String saveTest(@ModelAttribute("test") Test test) {
         testService.saveTest(test);
-        return "redirect:/recepcja/tests";
+        return "redirect:/admin/tests";
     }
 
     @GetMapping("/edit/{id}")
@@ -51,7 +49,7 @@ public class TestController {
     @GetMapping("/delete/{id}")
     public String deleteTest(@PathVariable(value = "id") Integer id) {
         this.testService.deleteTestById(id);
-        return "redirect:/recepcja/tests";
+        return "redirect:/admin/tests";
     }
 
     @GetMapping("/details/{id}")
@@ -69,5 +67,4 @@ public class TestController {
         model.addAttribute("testTypes", testTypes); // Change the attribute name to "testTypes"
         return "tests/new_test";
     }
-
 }

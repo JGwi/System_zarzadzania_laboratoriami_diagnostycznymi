@@ -1,8 +1,10 @@
 package com.labmaster.labmaster_03;
 
 import com.labmaster.labmaster_03.entities.DiagnosticMachines;
+import com.labmaster.labmaster_03.entities.Test_types;
 import com.labmaster.labmaster_03.entities.User;
 import com.labmaster.labmaster_03.repositories.DiagnosticMachinesRepository;
+import com.labmaster.labmaster_03.repositories.Test_typesRepository;
 import com.labmaster.labmaster_03.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Component
@@ -22,6 +25,9 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Autowired
     private DiagnosticMachinesRepository diagnosticMachineRepository;
+
+    @Autowired
+    private Test_typesRepository test_typesRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -135,8 +141,57 @@ public class DatabaseSeeder implements CommandLineRunner {
             diagnosticMachineRepository.save(machine8);
         }
 
-//        if (MachineRepository.count() == 0){
-//
-//        }
+        if(test_typesRepository.count() == 0){
+            Test_types testType1 = new Test_types();
+            testType1.setCzas_wykonania(LocalTime.parse("01:30:00"));
+            testType1.setKoszt(new BigDecimal("150.00"));
+            testType1.setType("Biochemia");
+            test_typesRepository.save(testType1);
+
+            Test_types testType2 = new Test_types();
+            testType2.setCzas_wykonania(LocalTime.parse("02:15:00"));
+            testType2.setKoszt(new BigDecimal("200.00"));
+            testType2.setType("Wirusologia");
+            test_typesRepository.save(testType2);
+
+            Test_types testType3 = new Test_types();
+            testType3.setCzas_wykonania(LocalTime.parse("04:00:00"));
+            testType3.setKoszt(new BigDecimal("300.00"));
+            testType3.setType("Genetyka");
+            test_typesRepository.save(testType3);
+
+            Test_types testType4 = new Test_types();
+            testType4.setCzas_wykonania(LocalTime.parse("01:45:00"));
+            testType4.setKoszt(new BigDecimal("180.00"));
+            testType4.setType("Immunologia");
+            test_typesRepository.save(testType4);
+
+            Test_types testType5 = new Test_types();
+            testType5.setCzas_wykonania(LocalTime.parse("03:30:00"));
+            testType5.setKoszt(new BigDecimal("250.00"));
+            testType5.setType("Toksykologia");
+            test_typesRepository.save(testType5);
+
+            Test_types testType6 = new Test_types();
+            testType6.setCzas_wykonania(LocalTime.parse("01:00:00"));
+            testType6.setKoszt(new BigDecimal("120.00"));
+            testType6.setType("Hematologia");
+            test_typesRepository.save(testType6);
+
+            Test_types testType7 = new Test_types();
+            testType7.setCzas_wykonania(LocalTime.parse("05:00:00"));
+            testType7.setKoszt(new BigDecimal("350.00"));
+            testType7.setType("Transfuzjologia");
+            test_typesRepository.save(testType7);
+
+            Test_types testType8 = new Test_types();
+            testType8.setCzas_wykonania(LocalTime.parse("02:30:00"));
+            testType8.setKoszt(new BigDecimal("220.00"));
+            testType8.setType("Parazytologia");
+            test_typesRepository.save(testType8);
+        }
+
+
+
     }
 }
