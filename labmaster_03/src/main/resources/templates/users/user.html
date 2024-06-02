@@ -105,9 +105,9 @@ div.content {
 
 
     <div class="container">
-        <h1 class="text-center my-4">Dane pacjentów</h1>
+        <h1 class="text-center my-4">Dane Użytkowników</h1>
 
-        <a th:href="@{/admin/user/register}" class="btn btn-primary btn-sm mb-3" style="color: #06004F; border-color: #99B333; background-color: #99B333;"> Dodaj użytkownika </a>
+        <a th:href="@{/admin/user/register}" class="btn btn-primary btn-sm mb-3" style="color: #06004F; border-color: #FFE600; background-color: #FFE600;"> Dodaj użytkownika </a>
 
         <table class="table">
             <thead>
@@ -128,7 +128,7 @@ div.content {
                 <td th:text="${user.role}"></td>
                 <td th:text="${user.enabled}"></td>
                 <td style="white=space:nowrap">
-                    <a class="btn btn-primary btn-sm" style="color: #06004F; border-color: #99B333; background-color: #99B333;"
+                    <a class="btn btn-primary btn-sm" style="color: #06004F; border-color: #FFE600; background-color: #FFE600;"
                        th:href="@{/admin/user/edit/{id}(id=${user.id})}">Edit</a>
                     <a class="btn btn-danger btn-sm"
                        th:href="@{/admin/user/delete/{id}(id=${user.id})}"
