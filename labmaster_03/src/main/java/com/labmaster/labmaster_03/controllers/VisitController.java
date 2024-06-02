@@ -28,7 +28,6 @@ public class VisitController {
 
     @PostMapping("/saveVisit")
     public String saveEmployee(@ModelAttribute("visit") Visit visit) {
-        // save employee to database
         visitService.saveVisit(visit);
         return "redirect:/recepcja/visits";
     }

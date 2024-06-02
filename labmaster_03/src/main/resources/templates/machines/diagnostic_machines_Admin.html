@@ -147,7 +147,7 @@ div.content {
         const machineId = document.getElementById('machineSelect').value;
 
         $.ajax({
-            url: `/laboratorium/diagnostic_machines/${machineId}`,
+            url: `/admin/diagnostic_machines/${machineId}`,
             type: 'GET',
             success: function(data) {
                 const formattedDate = new Date(data.dataZakupu).toISOString().split('T')[0];
@@ -166,7 +166,7 @@ div.content {
 
                 // Fetching usage data
                 $.ajax({
-                    url: `/laboratorium/schedule_maszyny/${machineId}`,
+                    url: `/admin/schedule_maszyny_Admin/${machineId}`,
                     type: 'GET',
                     success: function(usages) {
 
