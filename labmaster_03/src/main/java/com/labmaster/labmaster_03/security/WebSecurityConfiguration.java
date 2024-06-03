@@ -34,7 +34,7 @@ public class WebSecurityConfiguration {
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/recepcja/**").hasRole("REC")
                         .requestMatchers("/ksiegowosc/**").hasRole("ACC")
-                        .requestMatchers("/laboratorium/**").hasRole("LAB")
+                        .requestMatchers("/laboratorium/**").hasAnyRole("LAB", "ADMIN")
                         .requestMatchers("/dashboard").hasRole("USER")
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin

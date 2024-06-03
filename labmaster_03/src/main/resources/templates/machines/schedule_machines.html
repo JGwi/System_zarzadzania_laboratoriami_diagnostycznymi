@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Harmonogram maszyn diagnostycznych</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Lato", sans-serif;
+        }
+        .sidebar {
+            margin: 0;
+            padding: 0;
+            width: 300px;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+        .sidebar a {
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
+        }
+        .sidebar a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+        .sidebar a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+        div.content {
+            margin-left: 300px;
+            padding: 1px 16px;
+            height: 1000px;
+        }
+        .week-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .week-navigation span {
+            font-size: 1.2rem;
+        }
+        .calendar {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .calendar th, .calendar td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            vertical-align: top;
+        }
+        .calendar th {
+            background-color: #f4f4f4;
+        }.machine-usage {
+            background-color: #d94d99;
+            color: white;
+            margin: 5px 0;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/" style="color: #06004F;">[LabMaster-LOGO]</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" class="btn btn btn-lg" role="button"
+                           style="color: #06004F; background-color: #FFE600;" value="Logout"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="sidebar">
+    <a class="nav-item nav-link disabled" href="/laboratorium/dashboard">LabMaster</a>
+    <a class="active" href="/laboratorium/dashboard" style="background-color: #D94D99;">Panel kontroli</a>
+    <a href="#">Historia badań</a>
+    <a href="#">Powiadomienia</a>
+    <a href="#">Skład próbek</a>
+    <a href="#">Terminy</a>
+</div>
+
+<div class="content">
+    <div class="container">
+        <div class="week-navigation">
+            <button class="btn btn-secondary" onclick="navigateWeek(-1)">&lt;</button>
+            <span id="weekRange">1.06 - 7.06</span>
+            <button class="btn btn-secondary" onclick="navigateWeek(1)">&gt;</button>
+        </div>
+
+        <div class="calendar">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Poniedziałek</th>
+                    <th>Wtorek</th>
+                    <th>Środa</th>
+                    <th>Czwartek</th>
+                    <th>Piątek</th>
+                    <th>Sobota</th>
+                    <th>Niedziela</th>
+                </tr>
+                </thead>
+                <tbody id="calendarBody">
+                <!-- Iterating over schedules using Thymeleaf -->
+                <tr th:each="schedule : ${schedules}">
+                    <td>
+                        <div class="machine-usage">
+                            <strong>Maszyna:</strong> [[${schedule.diagnosticMachines?.nazwaMaszyny}]]<br>
+                            <strong>Od:</strong> [[${schedule.data_roz}]]<br>
+                            <strong>Do:</strong> [[${schedule.data_zak}]]<br>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer class="footer fixed-bottom">
+    <div class="text-center p-3" style="background-color: #06004F; color: #fefefe">
+        © 2024 Copyright
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    let currentDate = new Date();
+
+    function navigateWeek(direction) {
+        currentDate.setDate(currentDate.getDate() + (direction * 7));
+        updateCalendar();
+    }
+
+    function updateCalendar() {
+    const startOfWeek = new Date(currentDate);
+    startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay() + 1); // Monday
+
+    const endOfWeek = new Date(startOfWeek);
+    endOfWeek.setDate(endOfWeek.getDate() + 6); // Sunday
+
+    const monthNames = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
+
+    const weekRange = `${startOfWeek.getDate()} ${monthNames[startOfWeek.getMonth()]} - ${endOfWeek.getDate()} ${monthNames[endOfWeek.getMonth()]}`;
+    document.getElementById('weekRange').textContent = weekRange;
+
+    // Clear the calendar body
+    const calendarBody = document.getElementById('calendarBody');
+    calendarBody.innerHTML = '';
+
+    // Fetch and display machine usages for all machines
+    $.getJSON(`/laboratorium/schedule_maszyny/json`, function(schedules) {
+        const weekDays = Array.from({ length: 7 }, (_, i) => {
+            const day = new Date(startOfWeek);
+            day.setDate(day.getDate() + i);
+            return day;
+        });
+
+        let rows = '<tr>';
+
+        weekDays.forEach(day => {
+            const daySchedules = schedules.filter(schedule => {
+                const scheduleDate = new Date(schedule.data_roz);
+                return scheduleDate.toDateString() === day.toDateString();
+            });
+
+            const dayHtml = daySchedules.map(schedule => `
+                <div class="machine-usage">
+                    <strong>Maszyna:</strong> ${schedule.diagnosticMachines?.nazwaMaszyny}<br>
+                    <strong>Od:</strong> ${schedule.data_roz}<br>
+                    <strong>Do:</strong> ${schedule.data_zak}<br>
+                </div>
+            `).join('');
+
+            rows += `<td>${dayHtml}</td>`;
+        });
+
+        rows += '</tr>';
+        calendarBody.innerHTML = rows;
+    });
+}
+
+
+    $(document).ready(function() {
+        updateCalendar();
+    });
+</script>
+</body>
+</html>

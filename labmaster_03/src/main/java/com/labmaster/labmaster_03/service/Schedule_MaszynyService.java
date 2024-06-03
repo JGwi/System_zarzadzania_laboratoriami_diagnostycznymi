@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface Schedule_MaszynyService {
     List<Schedule_maszyny> getSchedulesByMachineId(Integer id);
+    List<Schedule_maszyny> getAllSchedules();
 }

@@ -16,4 +16,8 @@ public class Schedule_MaszynyServiceImpl implements Schedule_MaszynyService{
     public List<Schedule_maszyny> getSchedulesByMachineId(Integer machineId) {
         return scheduleMaszynyRepository.findByDiagnosticMachinesId(machineId);
     }
+
+    public List<Schedule_maszyny> getAllSchedules(){
+        return scheduleMaszynyRepository.findAll();
+    }
 }
