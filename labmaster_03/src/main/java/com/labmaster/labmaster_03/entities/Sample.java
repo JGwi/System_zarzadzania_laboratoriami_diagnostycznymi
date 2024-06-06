@@ -12,7 +12,6 @@ public class Sample {
     private String stan;
     private String typProbki;
     private String uwagi;
-    private Long userId; // Assuming user_id is of type Long
     private Integer visitId;
 
     // Getters and Setters
@@ -54,14 +53,6 @@ public class Sample {
 
     public void setUwagi(String uwagi) {
         this.uwagi = uwagi;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public Integer getVisitId() {
