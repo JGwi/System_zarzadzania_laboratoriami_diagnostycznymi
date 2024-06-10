@@ -5,16 +5,20 @@ import java.time.LocalDate;
 
 @Entity
 public class Sample {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private LocalDate dataPobrania;
     private String stan;
     private String typProbki;
-    private String uwagi;
-    private Integer visitId;
 
-    // Getters and Setters
+    @ManyToOne
+    @JoinColumn(name = "visit_id")
+    private Visit visit;
+
+    private String uwagi;
+
     public int getId() {
         return id;
     }
@@ -47,19 +51,19 @@ public class Sample {
         this.typProbki = typProbki;
     }
 
+    public Visit getVisit() {
+        return visit;
+    }
+
+    public void setVisit(Visit visit) {
+        this.visit = visit;
+    }
+
     public String getUwagi() {
         return uwagi;
     }
 
     public void setUwagi(String uwagi) {
         this.uwagi = uwagi;
-    }
-
-    public Integer getVisitId() {
-        return visitId;
-    }
-
-    public void setVisitId(Integer visitId) {
-        this.visitId = visitId;
     }
 }
