@@ -123,7 +123,7 @@ div.content {
             <td th:text="${sample.uwagi}"></td>
             <td th:text="${sample.visit != null ? sample.visit.id : 'N/A'}"></td>
             <td>
-                <a th:href="@{/recepcja/sample/edit/{id}(id=${sample.id})}" class="btn btn-primary btn-sm" style="color: #06004F; border-color: #D9D9D9; background-color: #D94D99;">Update</a>
+                <a th:href="@{/laboratorium/sample/edit/{id}(id=${sample.id})}" class="btn btn-primary btn-sm" style="color: #06004F; border-color: #D9D9D9; background-color: #D94D99;">Update</a>
                 <a class="btn btn-danger btn-sm"
                    th:href="@{/laboratorium/sample/delete/{id}(id=${sample.id})}"
                    onclick="return confirm('czy jesteś pewien?')">Usuń</a>

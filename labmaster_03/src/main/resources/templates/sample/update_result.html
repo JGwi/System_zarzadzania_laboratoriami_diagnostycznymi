@@ -86,48 +86,55 @@
 </div>
 
 <div class="content">
-    <div class="container">
-        <h1>Centrum badań</h1>
-        <hr>
-        <div class="row">
-            <div class="col-md-8 mx-auto rounded border p-4 m-4">
 
-                <h2 class="text-center mb-5">Edycja Próbki</h2>
+    <div class="row">
+        <div class="col-md-8 mx-auto rounded border p-4 m-4">
 
-                <form th:action="@{/laboratorium/sample/saveSample}" th:object="${sample}" method="POST"
-                      class="was-validated">
-                    <input type="hidden" th:field="*{id}">
+            <h2 class="text-center mb-5">Edycja Próbki</h2>
 
-                    <div class="row mb-3">
-                        <label class="col-sm-4 col-form-label">Typ Próbki</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{typProbki}" required>
-                            <div class="valid-feedback">✦</div>
-                            <div class="invalid-feedback">Typ Próbki jest wymagany.</div>
-                        </div>
+            <form th:action="@{/recepcja/sample/saveSample}" th:object="${sample}" method="POST"
+                  class="was-validated">
+                <input type="hidden" th:field="*{id}">
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="typProbki">Typ Próbki</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="typProbki" th:field="*{typProbki}" required>
+                        <div class="valid-feedback">✦</div>
+                        <div class="invalid-feedback">Typ Próbki jest wymagany.</div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-4 col-form-label">Data Pobrania</label>
-                        <div class="col-sm-8">
-                            <input type="date" class="form-control" th:field="*{dataPobrania}" required>
-                            <div class="valid-feedback">✦</div>
-                            <div class="invalid-feedback">Data Pobrania jest wymagana.</div>
-                        </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="dataPobrania">Data Pobrania</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="datetime" id="dataPobrania" th:field="*{dataPobrania}" th:value="${sample.dataPobrania}" required>
+                        <div class="valid-feedback">✦</div>
+                        <div class="invalid-feedback">Data Pobrania jest wymagana.</div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-4 col-form-label">Stan</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{stan}" required>
-                            <div class="valid-feedback">✦</div>
-                            <div class="invalid-feedback">Stan jest wymagany.</div>
-                        </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="stan">Stan</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="stan" th:field="*{stan}" required>
+                        <div class="valid-feedback">✦</div>
+                        <div class="invalid-feedback">Stan jest wymagany.</div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-4 col-form-label">Uwagi</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{uwagi}">
-                        </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="uwagi">Uwagi</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="uwagi" th:field="*{uwagi}">
                     </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label" for="visit">ID Wizyty</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="visit" th:field="*{visit.id}" required>
+                        <div class="valid-feedback">✦</div>
+                        <div class="invalid-feedback">ID Wizyty jest wymagane.</div>
+                    </div>
+                </div>
 
                     <div class="row">
                         <div class="offset-sm-4 col-sm-4 d-grid">
