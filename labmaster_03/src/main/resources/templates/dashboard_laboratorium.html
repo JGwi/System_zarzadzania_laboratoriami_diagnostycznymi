@@ -98,7 +98,9 @@ div.content {
 </div>
 
 <div class="content">
-<h1>dashboard -> laboratorium <-</h1>
+    <div class="container">
+        <h1>Centrum badań</h1>
+        <hr>
 
 <h3 th:inline="text">Welcome <span sec:authentication="principal.username"></span></h3>
 
@@ -108,6 +110,7 @@ div.content {
         <a class="btn btn-primary" href="/laboratorium/results" style="color: white; border-color: #D9D9D9; background-color: #D94D99;">Dodaj Wyniki</a>
         <a class="btn btn-primary" href="/laboratorium/diagnostic_machines" style="color: white; border-color: #D9D9D9; background-color: #D94D99;">Maszyny diagnostyczne</a>
         <a class="btn btn-primary" href="/laboratorium/schedule_maszyny" style="color: white; border-color: #D9D9D9; background-color: #D94D99;">Rozkład użyc maszyn</a>
+    </div>
     </div>
 
 </form>
