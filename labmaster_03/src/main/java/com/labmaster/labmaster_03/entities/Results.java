@@ -9,6 +9,7 @@ public class Results {
 
     private int id;
     private Patient patient;
+    private Test test;
     private String wynik;
     private String interpretacja;
     private String inne;
@@ -29,6 +30,15 @@ public class Results {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    @ManyToOne
+    public Test getTest() {
+        return test;
+    }
+
+    public void setTest(Test test) {
+        this.test = test;
     }
 
     public String getWynik() {

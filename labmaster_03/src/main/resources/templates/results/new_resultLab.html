@@ -92,10 +92,10 @@ div.content {
 <div class="sidebar">
     <a class="nav-item nav-link disabled>LabMaster">LabMaster</a>
     <a class="active" href="/laboratorium/dashboard" style="background-color: #D94D99;">Panel kontroli</a>
-    <a href="#">Historia badań</a>
-    <a href="#">Powiadomienia</a>
-    <a href="#">Skład próbek</a>
-    <a href="#">Terminy</a>
+    <!--    <a href="#">Historia badań</a>-->
+    <a href="/laboratorium/tests">Zlecenia</a>
+    <a href="/laboratorium/sample">Skład próbek</a>
+    <!--    <a href="#">Terminy</a>-->
 </div>
 
 <div class="content">
@@ -112,6 +112,11 @@ div.content {
                 <div class="invalid-feedback">ID pacjęta jest wymagane.</div>
             </div>
 
+            <div class="mb-4 col-4">
+                <input type="text" class="form-control " th:field="*{test}" placeholder="Podaj id testu" required>
+                <div class="valid-feedback">✦</div>
+                <div class="invalid-feedback">ID test jest wymagane.</div>
+            </div>
 
             <div class="mb-4 col-4">
                 <input type="text" th:field="*{wynik}" placeholder="Dane wyniku" class="form-control "
@@ -135,7 +140,7 @@ div.content {
 
             <div class="row">
                 <div class="offset-sm-1 col-sm-2 d-grid">
-                    <button type="submit" class="btn btn-primary" style="color: #06004F; border-color: #99B333; background-color: #99B333;">Zapisz wynik</button>
+                    <button type="submit" class="btn btn-primary" style="color: #06004F; border-color: #D9D9D9; background-color: #D94D99;">Zapisz wynik</button>
                 </div>
                 <div class="col-sm-2 d-grid">
                     <a class="btn btn-outline-success" href="/laboratorium/results" role="button" style="color: #06004F; border-color: #99B333; ">Anuluj</a>
