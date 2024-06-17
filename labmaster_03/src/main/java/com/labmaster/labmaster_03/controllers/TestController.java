@@ -2,6 +2,7 @@ package com.labmaster.labmaster_03.controllers;
 
 import com.labmaster.labmaster_03.entities.Test;
 import com.labmaster.labmaster_03.entities.Test_types;
+import com.labmaster.labmaster_03.service.SampleService;
 import com.labmaster.labmaster_03.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,16 @@ import java.util.List;
 public class TestController {
 
     @Autowired
-    private TestService testService;
+    private final TestService testService;
+    private final SampleService sampleService;
+
+    @Autowired
+    public TestController(TestService testService, SampleService sampleService) {
+        this.testService = testService;
+        this.sampleService = sampleService;
+    }
+
+
 
     @GetMapping({"", "/"})
     public String viewTestPage(Model model) {
@@ -28,6 +38,7 @@ public class TestController {
     @GetMapping("/create")
     public String showNewTestForm(Model model) {
         model.addAttribute("testTypes", testService.getAllTestTypes());
+        model.addAttribute("samples", sampleService.getAllSample());
         Test test = new Test();
         test.setWykonanie(LocalDateTime.now());
         model.addAttribute("test", test);

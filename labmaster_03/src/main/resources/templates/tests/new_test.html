@@ -118,7 +118,12 @@ div.content {
                     <div class="row mb-3">
                         <label class="col-sm-4 col-form-label">Próbka do badania</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{sample}" required>
+                            <select class="form-select" th:field="*{sample}" required>
+                                <option value="">Wybierz próbkę</option>
+                                <option th:each="sample : ${samples}" th:value="${sample.id}"
+                                        th:text="${sample.id}"></option>
+                            </select>
+
                             <div class="valid-feedback">✦</div>
                             <div class="invalid-feedback">sample_id jest wymagane.</div>
                         </div>
@@ -131,12 +136,6 @@ div.content {
                             <div class="invalid-feedback">Zleceniodawca jest wymagane.</div>
                         </div>
                     </div>
-<!--                    <div class="row mb-3">-->
-<!--                        <label class="col-sm-4 col-form-label">Wykonawca</label>-->
-<!--                        <div class="col-sm-8">-->
-<!--                            <input type="text" class="form-control" th:field="*{wykonawca}">-->
-<!--                        </div>-->
-<!--                    </div>-->
                     <div class="row mb-3">
                         <label class="col-sm-4 col-form-label">Typ testu</label>
                         <div class="col-sm-8">

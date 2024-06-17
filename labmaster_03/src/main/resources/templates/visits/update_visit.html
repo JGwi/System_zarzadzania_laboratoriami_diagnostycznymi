@@ -113,8 +113,11 @@
                     <div class="row mb-3">
                         <label class="col-sm-4 col-form-label">Patient ID</label>
                         <div class="col-sm-8">
-                            <input type="text" th:field="*{patient}" placeholder="Enter patient ID" class="form-control"
-                                   required>
+                            <input type="text" th:field="*{patient}" placeholder="Enter patient ID" class="form-control" required>
+<!--                            <select class="form-select" th:field="*{patient}" required>-->
+<!--                                <option th:each="patient : ${patients}" th:value="${patient.id}"-->
+<!--                                        th:text="${patient.pesel}"></option>-->
+<!--                            </select>-->
                             <div class="valid-feedback">✦</div>
                             <div class="invalid-feedback">Patient ID is required.</div>
                         </div>

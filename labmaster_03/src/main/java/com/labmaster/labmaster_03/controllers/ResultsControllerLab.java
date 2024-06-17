@@ -1,7 +1,9 @@
 package com.labmaster.labmaster_03.controllers;
 
 import com.labmaster.labmaster_03.entities.Results;
+import com.labmaster.labmaster_03.service.PatientService;
 import com.labmaster.labmaster_03.service.ResultsService;
+import com.labmaster.labmaster_03.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +13,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/laboratorium/results")
 public class ResultsControllerLab {
     @Autowired
-    private ResultsService resultsService;
+    private final ResultsService resultsService;
+    private final PatientService patientService;
+//    private final TestService testService;
+
+    @Autowired
+    public ResultsControllerLab(ResultsService resultsService, PatientService patientService){
+        this.resultsService =   resultsService;
+        this.patientService =   patientService;
+//        this.testService = testService;
+    }
 
     @GetMapping({"", "/"})
     public String viewResultLabPage(Model model) {
@@ -23,6 +34,9 @@ public class ResultsControllerLab {
     public String showNewResultLabForm(Model model) {
         Results results = new Results();
         model.addAttribute("result", results);
+        model.addAttribute("patients", patientService.getAllPatient());
+//        model.addAttribute("test", testService.getTestById());
+
         return "results/new_resultLab";
     }
 

@@ -126,9 +126,14 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label class="col-sm-4 col-form-label" for="visit">Wizyta</label>
+                        <label class="col-sm-4 col-form-label">Wizyta</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="visit" th:field="*{visit}" placeholder="Wprowadź ID wizyty" required>
+                            <input type="text" class="form-control" th:field="*{visit}" placeholder="Wprowadź ID wizyty" required>
+<!--                            <select class="form-select" th:field="*{visit}" required>-->
+<!--                                <option value="">Podaj id visit</option>-->
+<!--                                <option th:each="visit : ${visits}" th:value="${visit.id}"-->
+<!--                                        th:text="${visit.pesel}"></option>-->
+<!--                            </select>-->
                             <div class="valid-feedback">✦</div>
                             <div class="invalid-feedback">Wizyta jest wymagana.</div>
                         </div>

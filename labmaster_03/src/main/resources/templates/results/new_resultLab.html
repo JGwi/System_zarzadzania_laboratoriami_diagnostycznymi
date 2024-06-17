@@ -107,7 +107,12 @@ div.content {
         <form action="#" th:action="@{/laboratorium/results/saveResult}" th:object="${result}" method="POST" class="was-validated">
 
             <div class="mb-4 col-4">
-                <input type="text" class="form-control " th:field="*{patient}" placeholder="Podaj id pacjęta" required>
+<!--                <input type="text" class="form-control " th:field="*{patient}" placeholder="Podaj id pacjęta" required>-->
+                <select class="form-select" th:field="*{patient}" required>
+                    <option value="">Podaj id pacjęta</option>
+                    <option th:each="patient : ${patients}" th:value="${patient.id}"
+                            th:text="${patient.pesel}"></option>
+                </select>
                 <div class="valid-feedback">✦</div>
                 <div class="invalid-feedback">ID pacjęta jest wymagane.</div>
             </div>

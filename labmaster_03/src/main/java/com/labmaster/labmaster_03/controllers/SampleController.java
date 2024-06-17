@@ -2,6 +2,7 @@ package com.labmaster.labmaster_03.controllers;
 
 import com.labmaster.labmaster_03.entities.Sample;
 import com.labmaster.labmaster_03.service.SampleService;
+import com.labmaster.labmaster_03.service.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/laboratorium/sample")
 public class SampleController {
     @Autowired
-    private SampleService sampleService;
+    private final SampleService sampleService;
+    private final VisitService visitService;
+
+    @Autowired
+    public SampleController(SampleService sampleService, VisitService visitService){
+        this.sampleService = sampleService;
+        this.visitService = visitService;
+    }
 
     @GetMapping({"", "/"})
     public String viewSamplePage(Model model) {
@@ -21,6 +29,7 @@ public class SampleController {
 
     @GetMapping("/create")
     public String showNewSampleForm(Model model) {
+        model.addAttribute("visit", visitService.getAllVisits());
         Sample sample = new Sample();
         model.addAttribute("sample", sample);
         return "sample/new_result";

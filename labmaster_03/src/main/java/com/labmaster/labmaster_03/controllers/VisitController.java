@@ -1,6 +1,8 @@
 package com.labmaster.labmaster_03.controllers;
 
 import com.labmaster.labmaster_03.entities.Visit;
+import com.labmaster.labmaster_03.service.PatientService;
+import com.labmaster.labmaster_03.service.PatientServiceImpl;
 import com.labmaster.labmaster_03.service.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class VisitController {
     @Autowired
     private VisitService visitService;
+    private PatientService patientService;
 
     @GetMapping({"","/"})
     public String viewVisitPage(Model model) {
@@ -21,6 +24,7 @@ public class VisitController {
 
     @GetMapping("/create")
     public String showNewVisitForm(Model model) {
+        model.addAttribute("patients", patientService.getAllPatient());
         Visit visit = new Visit();
         model.addAttribute("visit", visit);
         return "visits/new_visit";
