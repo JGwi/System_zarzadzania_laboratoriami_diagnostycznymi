@@ -9,23 +9,33 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class TestServiceImpl implements TestService {
 
     private final Test_typesRepository testTypesRepository;
+
     @Autowired
     public TestServiceImpl(Test_typesRepository testTypesRepository) {
         this.testTypesRepository = testTypesRepository;
     }
+
     @Autowired
     private TestRepository testRepository;
 
     @Override
-    public List < Test > getAllTests() {
+    public List<Test> getAllTests() {
         return testRepository.findAll();
     }
+
+    //    getAllTestsNFZ();
     @Override
-    public List < Test_types > getAllTestTypes() {
+    public List<Test> getAllTestsWithNfzFormat() {
+        return testRepository.getAllTestsWithNfzFormat();
+    }
+
+    @Override
+    public List<Test_types> getAllTestTypes() {
         return testTypesRepository.findAll();
     }
 
@@ -41,7 +51,7 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public Test getTestById(Integer id) {
-        Optional < Test > optional = testRepository.findById(id);
+        Optional<Test> optional = testRepository.findById(id);
         Test test;
         if (optional.isPresent()) {
             test = optional.get();
