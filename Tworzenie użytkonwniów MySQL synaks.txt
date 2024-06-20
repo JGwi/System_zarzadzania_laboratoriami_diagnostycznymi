@@ -1,0 +1,74 @@
+KONTO TESTOWE:
+INSERT INTO `users` (`username`,`password`,`role`,`enabled`)
+VALUES ('namhm',
+'$2a$10$XptfskLsT1l/bRTLRiiCgejHqOpgXFreUnNUa35gJdCr2v2QbVFzu',
+'ROLE_USER', 1);
+
+UŻYTKOWNIK:namhm HASŁO:codejava
+///////////////////////////////
+
+INSERT INTO `users` (`username`,`password`,`role`,`enabled`)
+VALUES ('rec1',
+'$2a$10$8HURDm1cF6YQUfrHhhOET.AZ8S1R836o/z0Qz2kDE59ISbdO6QcTu',
+'ROLE_REC', 1);
+
+INSERT INTO `users` (`username`,`password`,`role`,`enabled`)
+VALUES ('lab1',
+'$2a$10$BJC5zJrcFRX/5szqVsbeIesUFH3XHclDuNIk.YNrp09z0JmlDSEHC',
+'ROLE_LAB', 1);
+
+INSERT INTO `users` (`username`,`password`,`role`,`enabled`)
+VALUES ('acc1',
+'$2a$10$wUHZ7kHB.HzD1RQbaMYh/elcgI5.bIarVmJ1Fxp47m/HGlcnvZbPi',
+'ROLE_ACC', 1);
+
+INSERT INTO `users` (`username`,`password`,`role`,`enabled`)
+VALUES ('admin1',
+'$2a$10$1BBR2VLienrA5DX55mRaQOrQj1ZToOtvT.MYPKTlqCF.2gq15MpOK',
+'ROLE_ADMIN', 1);
+
+
+/////////////////////////////
+Hasła dla użytkowników stanowią ich nazwy(np. nik: rec1 hasło: rec1)
+SPROSTOWANIE:
+"acc" - skrót od "accounting" (księgowość)
+"lab" - skrót od "laboratory" (laboratorium)
+"rec" - skrót od "reception" (recepcja)
+"admin" - skrót od "administration" (administracja)
+
+
+
+
+//////////////////////////////////////////////
+Dodatkowe żeszy:
+
+INSERT INTO test_types (type, koszt, czas_wykonania) VALUES
+('Biochemia', 150.00, '01:30:00'),
+('Wirusologia', 200.00, '02:15:00'),
+('Genetyka', 300.00, '04:00:00'),
+('Immunologia', 180.00, '01:45:00'),
+('Toksykologia', 250.00, '03:30:00'),
+('Hematologia', 120.00, '01:00:00'),
+('Transfuzjologia', 350.00, '05:00:00'),
+('Parazytologia', 220.00, '02:30:00');
+
+
+INSERT INTO sample (visit, typ_probki, Data_pobrania, stan, uwagi) VALUES
+(1, 'Krew', '2024-04-27', 'Zdatna do badań', 'Brak uwag'),
+(2, 'Mocz', '2024-04-26', 'Wykorzystywana do badań', 'Możliwa kontaminacja'),
+(3, 'Surowica', '2024-04-25', 'Zutylizowana', 'Przechowywać w temperaturze kontrolowanej'),
+(4, 'Komórki krwi obwodowej', '2024-04-25', 'Zdatna do badań', 'Brak uwag'),
+(5, 'Ślina', '2024-04-25', 'Wykorzystywana do badań', 'Możliwe zakażenie wirusowe'),
+(6, 'Kał', '2024-04-24', 'Zutylizowana', 'Przechowywać w szczelnym pojemniku'),
+(7, 'Krew', '2024-04-24', 'Zdatna do badań', 'Przechowywać w chłodziarce'),
+(8, 'Mocz', '2024-04-23', 'Wykorzystywana do badań', 'Możliwa kontaminacja');
+
+
+INSERT INTO test (sample, test_types, wykonanie, nfz, zleceniodawca, wykonawca, stan, uwagi) VALUES
+(1, 1, '2024-04-27T08:00:00', 1234567890, 'Dr. Jan Kowalski', 'Laboratorium XYZ', 'Zlecony', 'Brak uwag'),
+(2, 3, '2024-04-26T10:30:00', 9876543210, 'Szpital Świętego Ducha', 'Laboratorium ABC', 'W trakcie', 'Częściowo przeprowadzony'),
+(3, 2, '2024-04-25T14:15:00', 5678901234, 'Dr. Anna Nowak', 'Laboratorium XYZ', 'Zakończony', 'Brak uwag'),
+(4, 5, '2024-04-24T09:45:00', 3456789012, 'NZOZ Medica', 'Laboratorium ABC', 'Przerwany', 'Badanie nieprawidłowe'),
+(5, 4, '2024-04-23T11:00:00', 7890123456, 'Dr. Marek Wiśniewski', 'Laboratorium XYZ', 'Zakończony', 'Brak uwag');
+
+
