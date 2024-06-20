@@ -4,8 +4,11 @@ import com.labmaster.labmaster_03.entities.*;
 import com.labmaster.labmaster_03.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -29,6 +32,41 @@ public class DatabaseSeeder implements CommandLineRunner {
     private ResultsRepository resultsRepository;
     @Autowired
     private SampleRepository sampleRepository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    private void createGetAllUsersProcedure() {
+        String createProcedureSql = "CREATE PROCEDURE IF NOT EXISTS GetAllUsers() " +
+                "BEGIN " +
+                "SELECT * FROM Users; " +
+                "END";
+        jdbcTemplate.execute(createProcedureSql);
+    }
+
+    private void createAfterDeleteUserTrigger() {
+        String createTriggerSql = "CREATE TRIGGER IF NOT EXISTS AfterDeleteUser " +
+                "AFTER DELETE ON Users " +
+                "FOR EACH ROW " +
+                "BEGIN " +
+                "INSERT INTO User_Log (" +
+                "Delete_User_id, " +
+                "Delete_User_username, " +
+                "Delete_User_password, " +
+                "Delete_User_role, " +
+                "Delete_User_enabled, " +
+                "deletion_date) " +
+                "VALUES (" +
+                "OLD.id, " +
+                "OLD.username, " +
+                "OLD.password, " +
+                "OLD.role, " +
+                "OLD.enabled, " +
+                "NOW()); " +
+                "END";
+        jdbcTemplate.execute(createTriggerSql);
+    }
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -491,8 +529,7 @@ public class DatabaseSeeder implements CommandLineRunner {
             resultsRepository.save(result19);
         }
 
-
-
-
+        createGetAllUsersProcedure();
+        createAfterDeleteUserTrigger();
     }
 }

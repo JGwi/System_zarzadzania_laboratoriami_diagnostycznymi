@@ -1,0 +1,29 @@
+--DELIMITER //
+--
+--CREATE PROCEDURE IF NOT EXISTS GetAllUsers()
+--BEGIN
+--    SELECT * FROM Users;
+--END //
+--
+--
+--CREATE TRIGGER IF NOT EXISTS AfterDeleteUser
+--AFTER DELETE ON Users
+--FOR EACH ROW
+--BEGIN
+--    INSERT INTO User_Log (
+--        Delete_User_id,
+--        Delete_User_username,
+--        Delete_User_password,
+--        Delete_User_role,
+--        Delete_User_enabled,
+--        deletion_date
+--    )
+--    VALUES (
+--        OLD.id,
+--        OLD.username,
+--        OLD.password,
+--        OLD.role,
+--        OLD.enabled,
+--        NOW()
+--    );
+--END //

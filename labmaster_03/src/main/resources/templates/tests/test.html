@@ -99,13 +99,9 @@
     <!--    <a href="#">Opcja2</a>-->
     <!--    <a href="#">Opcja4</a>-->
 </div>
-
 <div class="content">
-
     <div class="container">
         <h1 class="text-center my-4">Historia badań</h1>
-        <a th:href="@{/recepcja/tests/create}" class="btn btn-primary btn-sm mb-3" style="color: #06004F; border-color: #99B333; background-color: #99B333;"> Zleć badanie </a>
-
         <table class="table">
             <thead>
             <tr>
@@ -114,23 +110,32 @@
                 <th>Typ testu</th>
                 <th>Wykonanie</th>
                 <th>Nr.NFZ</th>
-                <th>zleceniodawca</th>
-                <th>wykonawca</th>
+                <th>Zleceniodawca</th>
+                <th>Wykonawca</th>
                 <th>Stan</th>
-                <th>Uwagi</th>
+                <!--        <th>Uwagi</th>-->
+                <th>Akcje</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="test : ${listTests}">
                 <td th:text="${test.id}"></td>
-                <td th:if="${test.sample != null}" th:text="${test.sample.id}"></td>
-                <td th:text="${test.test_types.type}"></td>
-                <td th:text="${test.wykonanie}"></td>
-                <td th:text="${test.nfz}"></td>
-                <td th:text="${test.zleceniodawca}"></td>
-                <td th:text="${test.wykonawca}"></td>
-                <td th:text="${test.stan}"></td>
-                <td th:text="${test.uwagi}"></td>
+                <td th:if="${test.sample != null}" th:text="${test.sample.id}">N/A</td>
+                <td th:if="${test.sample == null}">N/A</td>
+                <td th:if="${test.test_types != null}" th:text="${test.test_types.type}">N/A</td>
+                <td th:if="${test.test_types == null}">N/A</td>
+                <td th:if="${test.wykonanie != null}" th:text="${test.wykonanie}">N/A</td>
+                <td th:if="${test.wykonanie == null}">N/A</td>
+                <td th:if="${test.nfz != null}" th:text="${test.nfz}">N/A</td>
+                <td th:if="${test.nfz == null}">N/A</td>
+                <td th:if="${test.zleceniodawca != null}" th:text="${test.zleceniodawca}">N/A</td>
+                <td th:if="${test.zleceniodawca == null}">N/A</td>
+                <td th:if="${test.wykonawca != null}" th:text="${test.wykonawca}">N/A</td>
+                <td th:if="${test.wykonawca == null}">N/A</td>
+                <td th:if="${test.stan != null}" th:text="${test.stan}">N/A</td>
+                <td th:if="${test.stan == null}">N/A</td>
+                <!--        <td th:if="${test.uwagi != null}" th:text="${test.uwagi}">N/A</td>-->
+                <!--        <td th:if="${test.uwagi == null}">N/A</td>-->
                 <td style="white=space:nowrap">
                     <a class="btn btn-info btn-sm" style="color: #06004F;" th:href="@{/recepcja/tests/details/{testId}(testId=${test.id})}">Szczegóły</a>
 
@@ -145,6 +150,7 @@
         </table>
     </div>
 </div>
+
 
 <!--<footer class="footer fixed-bottom">-->
 <!--    <div class="text-center p-3" style="background-color: #06004F; ">-->
