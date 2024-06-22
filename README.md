@@ -29,7 +29,7 @@ Przy użyciu lokalnej bazy danych MySQL:
 - Poczekać aż projekt się zbuduje i powierze wszystkie dependies (Może potrwać kilka minut)
 - Uperwiając sie że baza danych działa, uruchomić gółwną klasę programu 'Labmaster03Application' (zielona szczałka u górnycm pasku zadań LUB strzałka przy klasie publick), znajdującą się pod labmaster_03 >src >main >java >com >labmaster >labmaster_03
 
-4. Jeśli projekt uruchomił się poprawnę, w przeglądace nalerzy wpisać http://localhost:8080, co umorzliwi wkorzystywanie go
+4. Jeśli projekt uruchomił się poprawnę, w przeglądace należy wpisać http://localhost:8080, co umożliwi wkorzystywanie go
 
 (Tymczasowe dane do logowania Username: user, Password: user1Pass
 !!!!!!!!!!! Dane do logowania zostaną zmienione w przysłości !!!!!!!!!)
