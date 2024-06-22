@@ -7,8 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -49,27 +47,23 @@ public class DatabaseSeeder implements CommandLineRunner {
                 "AFTER DELETE ON Users " +
                 "FOR EACH ROW " +
                 "BEGIN " +
-                "INSERT INTO User_Log (" +
-                "Delete_User_id, " +
-                "Delete_User_username, " +
-                "Delete_User_password, " +
-                "Delete_User_role, " +
-                "Delete_User_enabled, " +
-                "deletion_date) " +
-                "VALUES (" +
-                "OLD.id, " +
-                "OLD.username, " +
-                "OLD.password, " +
-                "OLD.role, " +
-                "OLD.enabled, " +
-                "NOW()); " +
-                "END";
+                "INSERT INTO user_log (user_id, action, date, user_name, user_role) VALUES (OLD.id, 'DELETE', NOW(), OLD.username, OLD.role); END";
+        jdbcTemplate.execute(createTriggerSql);
+    }
+
+
+    private void createAfterAddUserTrigger() {
+        String createTriggerSql = "CREATE TRIGGER IF NOT EXISTS AfterAddUser " +
+                "AFTER INSERT ON Users " +
+                "FOR EACH ROW " +
+                "BEGIN " +
+                "INSERT INTO user_log (user_id, action, date, user_name, user_role) VALUES (NEW.id, 'INSERT', NOW(), NEW.username, NEW.role); END";
         jdbcTemplate.execute(createTriggerSql);
     }
 
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         if (!userRepository.existsByUsername("admin")) {
             // Dodaj użytkownika "admin" tylko jeśli nie istnieje
             User adminUser = new User();
@@ -531,5 +525,6 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         createGetAllUsersProcedure();
         createAfterDeleteUserTrigger();
+        createAfterAddUserTrigger();
     }
 }
